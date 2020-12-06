@@ -43,6 +43,42 @@ TEST_CASE( "INSERT" )
     }
 }
 
+TEST_CASE( "CONTAINS" )
+{
+    binarySearchTree bst;
+
+    SECTION( "EMPTY" )
+    {
+        REQUIRE( bst.contains( 0 ) == false );
+    }
+
+    bst.insert( 0 );
+
+    SECTION( "VALUE" )
+    {
+        REQUIRE( bst.contains( 0 ) == true );
+        REQUIRE( bst.contains( 1 ) == false );
+    }
+
+    bst.insert( 1 );
+    bst.insert( 2 );
+    bst.insert( 3 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+    
+    SECTION( "VALUES" )
+    {
+        REQUIRE( bst.contains( 6 ) == false );
+        REQUIRE( bst.contains( 0 ) == true );
+        REQUIRE( bst.contains( 1 ) == true );
+        REQUIRE( bst.contains( 2 ) == true );
+        REQUIRE( bst.contains( 3 ) == true );
+        REQUIRE( bst.contains( 4 ) == true );
+        REQUIRE( bst.contains( 5 ) == true );
+        REQUIRE( bst.contains( 7 ) == false );
+    }
+}
+
 TEST_CASE( "REMOVE" )
 {
     binarySearchTree bst;

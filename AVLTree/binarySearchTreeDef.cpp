@@ -94,6 +94,26 @@ void binarySearchTree::remove( int x, node *&t )
 
 
 
+bool binarySearchTree::contains( int x )
+{
+	return contains( x, root );
+}
+
+
+
+bool binarySearchTree::contains( int x, node *t )
+{
+	if( t == nullptr )
+		return false;
+	else if( x < t->element )
+		return contains( x, t->left );
+	else if( x > t->element )
+		return contains( x, t->right );
+    return true;
+}
+
+
+
 void binarySearchTree::print( ostream &out )
 {
 	print( root, out );
