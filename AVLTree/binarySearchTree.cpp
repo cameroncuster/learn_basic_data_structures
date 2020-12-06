@@ -95,6 +95,16 @@ TEST_CASE( "FINDMIN" )
     binarySearchTree bst;
     
     stringstream sout;
+
+    REQUIRE( bst.findMin( ) == 0 );
+
+    bst.insert( 3 );
+    bst.insert( 1 );
+    bst.insert( 2 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    REQUIRE( bst.findMin( ) == 1 );
 }
 
 TEST_CASE( "FINDMAX" )
@@ -102,6 +112,16 @@ TEST_CASE( "FINDMAX" )
     binarySearchTree bst;
     
     stringstream sout;
+
+    REQUIRE( bst.findMax( ) == 0 );
+
+    bst.insert( 3 );
+    bst.insert( 1 );
+    bst.insert( 2 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    REQUIRE( bst.findMax( ) == 5 );
 }
 
 /*

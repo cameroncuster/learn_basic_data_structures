@@ -16,14 +16,18 @@ binarySearchTree::~binarySearchTree( )
 
 int binarySearchTree::findMin( )
 {
-	return findMin( root )->element;
+	if( findMin( root ) != nullptr )
+		return findMin( root )->element;
+	return 0;
 }
 
 
 
 int binarySearchTree::findMax( )
 {
-	return findMax( root )->element;
+	if( findMax( root ) != nullptr )
+		return findMax( root )->element;
+	return 0;
 }
 
 

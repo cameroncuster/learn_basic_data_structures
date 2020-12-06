@@ -47,7 +47,7 @@ class binarySearchTree
                 return nullptr;
             else if( t->left == nullptr )
                 return t;
-            findMin( t->left );
+            return findMin( t->left );
         }
 
         node *findMax( node *t )
@@ -56,7 +56,7 @@ class binarySearchTree
                 return nullptr;
             else if( t->right == nullptr )
                 return t;
-            findMin( t->right );
+            return findMax( t->right );
         }
 
         bool contains( int x, node *t );
