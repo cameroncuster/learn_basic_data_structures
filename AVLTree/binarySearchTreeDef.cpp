@@ -7,6 +7,20 @@ binarySearchTree::binarySearchTree( )
 
 
 
+binarySearchTree::~binarySearchTree( )
+{
+	makeEmpty( root );
+}
+
+
+
+void binarySearchTree::makeEmpty( )
+{
+	makeEmpty( root );
+}
+
+
+
 void binarySearchTree::makeEmpty( node *&t )
 {
 	if( t != nullptr )
@@ -20,26 +34,9 @@ void binarySearchTree::makeEmpty( node *&t )
 
 
 
-binarySearchTree::~binarySearchTree( )
-{
-	makeEmpty( root );
-}
-
-
 bool binarySearchTree::isEmpty( ) const
 {
 	return root == nullptr;
-}
-
-
-
-int binarySearchTree::size( )
-{
-	node *temp = root;
-	while( temp != nullptr )
-		temp = temp->left;
-	// skeleton
-	return 0;
 }
 
 

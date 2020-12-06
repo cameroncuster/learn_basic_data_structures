@@ -1,4 +1,3 @@
-#include <sstream>
 #include "..//catch.hpp"
 #include "binarySearchTree.h"
 
@@ -7,7 +6,6 @@ TEST_CASE( "CONSTRUCTOR" )
     binarySearchTree bst;
 
     REQUIRE( bst.isEmpty( ) == true );
-    REQUIRE( bst.size( ) == 0 );
 }
 
 TEST_CASE( "INSERT" )
