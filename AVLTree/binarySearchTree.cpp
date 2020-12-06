@@ -124,7 +124,6 @@ TEST_CASE( "FINDMAX" )
     REQUIRE( bst.findMax( ) == 5 );
 }
 
-/*
 TEST_CASE( "REMOVE" )
 {
     binarySearchTree bst;
@@ -180,4 +179,3 @@ TEST_CASE( "REMOVE" )
     }
     // use number of children to devise more test cases
 }
-*/

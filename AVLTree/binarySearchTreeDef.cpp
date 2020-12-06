@@ -102,9 +102,15 @@ void binarySearchTree::remove( int x, node *&t )
 		remove( x, t->right );
 	else if( t->left != nullptr && t->right != nullptr )
 	{
-        // handle case where t has children
+		t->element = findMin( t->right )->element;
+		remove( t->element, t->right );
     }
-    // go to parent of t point it to the single child of t, delete t
+	node *prev = t;
+	if( t->left == nullptr )
+		t = t->right;
+	else if( t->right == nullptr )
+		t = t->left;
+	delete prev;
 }
 
 
