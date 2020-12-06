@@ -22,7 +22,7 @@ class binarySearchTree
 
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
-        // to complete later
+        // to complete with AVL
         int upperBound( int keyBound ); // returns the smallest key in the tree such that key > x ( log n )
         int lowerBound( int keyBound ); // returns the smallest key that could also be equal ( log n )
         int keybyorder( int i ); // return the ith largest key ( log n )
@@ -47,7 +47,7 @@ class binarySearchTree
                 return nullptr;
             else if( t->left == nullptr )
                 return t;
-            findMin( t->left );
+            return findMin( t->left );
         }
 
         node *findMax( node *t )
@@ -56,7 +56,7 @@ class binarySearchTree
                 return nullptr;
             else if( t->right == nullptr )
                 return t;
-            findMax( t->right );
+            return findMax( t->right );
         }
 
         bool contains( int x, node *t );

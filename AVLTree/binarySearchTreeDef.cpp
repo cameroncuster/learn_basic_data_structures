@@ -143,6 +143,20 @@ void binarySearchTree::print( ostream &out )
 
 
 
+binarySearchTree::binarySearchTree( const binarySearchTree &t )
+{
+}
+
+
+
+const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
+{
+	// skeleton
+	return rhs;
+}
+
+
+
 void binarySearchTree::print( node *&t, ostream &out, string seperator )
 {
 	if( t == nullptr )
