@@ -10,6 +10,8 @@ class binarySearchTree
         binarySearchTree( const binarySearchTree &t );
         ~binarySearchTree( );
 
+        int findMin( );
+        int findMax( );
         bool contains( int x );
         bool isEmpty( ) const;
         void print( ostream &out );
@@ -37,6 +39,26 @@ class binarySearchTree
 
         void insert( int x, node *&t );
         void remove( int x, node *&t );
+
+        // internal method
+        node *findMin( node *t )
+        {
+            if( t == nullptr )
+                return nullptr;
+            else if( t->left == nullptr )
+                return t;
+            findMin( t->left );
+        }
+
+        node *findMax( node *t )
+        {
+            if( t == nullptr )
+                return nullptr;
+            else if( t->right == nullptr )
+                return t;
+            findMin( t->right );
+        }
+
         bool contains( int x, node *t );
         void makeEmpty( node *&t );
         void print( node *&t, ostream &out, string seperator = ", " );

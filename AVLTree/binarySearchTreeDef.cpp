@@ -14,6 +14,20 @@ binarySearchTree::~binarySearchTree( )
 
 
 
+int binarySearchTree::findMin( )
+{
+	return findMin( root )->element;
+}
+
+
+
+int binarySearchTree::findMax( )
+{
+	return findMax( root )->element;
+}
+
+
+
 void binarySearchTree::makeEmpty( )
 {
 	makeEmpty( root );
@@ -84,12 +98,9 @@ void binarySearchTree::remove( int x, node *&t )
 		remove( x, t->right );
 	else if( t->left != nullptr && t->right != nullptr )
 	{
-		// find the smallest value on the right and put it in the hole then delete that node
-	}
-	else
-	{
-		// check if the subtree has one child, handle that case then delete
-	}
+        // handle case where t has children
+    }
+    // go to parent of t point it to the single child of t, delete t
 }
 
 
