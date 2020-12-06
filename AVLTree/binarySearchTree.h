@@ -40,4 +40,5 @@ class binarySearchTree
         bool contains( int x, node *t );
         void makeEmpty( node *&t );
         void print( node *&t, ostream &out, string seperator = ", " );
+        node *clone( node *t );
 };
