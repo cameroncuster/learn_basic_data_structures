@@ -105,12 +105,13 @@ void binarySearchTree::remove( int x, node *&t )
 		t->element = findMin( t->right )->element;
 		remove( t->element, t->right );
     }
-	node *prev = t;
-	if( t->left == nullptr )
-		t = t->right;
-	else if( t->right == nullptr )
-		t = t->left;
-	delete prev;
+	else
+	{
+        if( t->left == nullptr )
+            t = t->right;
+        else if( t->right == nullptr )
+            t = t->left;
+	}
 }
 
 

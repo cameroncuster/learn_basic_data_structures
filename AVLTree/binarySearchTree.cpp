@@ -177,5 +177,20 @@ TEST_CASE( "REMOVE" )
         bst.print( sout );
         REQUIRE( sout.str( ) == "2, 4, " );
     }
-    // use number of children to devise more test cases
+
+    // TEST CASES DERIVED BASED ON CHILDREN COUNT
+
+    bst.insert( 3 );
+    bst.insert( 2 );
+    bst.insert( 1 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    bst.remove( 3 );
+
+    SECTION( "VALUE1" )
+    {
+        bst.print( sout );
+        REQUIRE( sout.str( ) == "1, 2, 4, 5, " );
+    }
 }
