@@ -1,6 +1,7 @@
 #include "..//catch.hpp"
 #include "binarySearchTree.h"
 
+// insert and remove duplicates
 TEST_CASE( "CONSTRUCTOR" )
 {
     binarySearchTree bst;
