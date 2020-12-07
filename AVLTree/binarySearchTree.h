@@ -63,5 +63,19 @@ class binarySearchTree
         bool contains( int x, node *t );
         void makeEmpty( node *&t );
         void print( node *&t, ostream &out, string seperator = ", " );
-        node *clone( node *t );
+
+        // internal method of copying the tree
+        node *clone( node *t ) 
+        {
+            if( t == nullptr )
+                return nullptr;
+
+            node *temp = new ( nothrow ) node;
+            if( temp == nullptr )
+                return nullptr;
+            temp->element = t->element;
+            temp->left = clone( t->left );
+            temp->right = clone( t->right );
+            return temp;
+        }
 };

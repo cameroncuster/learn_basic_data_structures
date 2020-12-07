@@ -9,7 +9,7 @@ binarySearchTree::binarySearchTree( )
 
 binarySearchTree::binarySearchTree( const binarySearchTree &t )
 {
-	// skeleton
+    root = clone( t.root );
 }
 
 
@@ -23,8 +23,8 @@ binarySearchTree::~binarySearchTree( )
 
 const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
 {
-    // skeleton
-    return rhs;
+	makeEmpty( );
+	return binarySearchTree( rhs );
 }
 
 
