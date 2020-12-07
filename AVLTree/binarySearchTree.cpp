@@ -2,6 +2,9 @@
 #include "binarySearchTree.h"
 
 // insert and remove duplicates
+// loop 1000 times and randomly insert/remove a number from the tree
+// number is 1 to 100 random
+// compare the output to an STL set, ensure they match
 TEST_CASE( "CONSTRUCTOR" )
 {
     binarySearchTree bst;
