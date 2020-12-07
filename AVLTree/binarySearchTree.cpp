@@ -2,6 +2,7 @@
 #include "binarySearchTree.h"
 
 // insert and remove duplicates
+// test remove on specific cases and step through every possibility
 // loop 1000 times and randomly insert/remove a number from the tree
 // number is 1 to 100 random
 // compare the output to an STL set, ensure they match
@@ -52,6 +53,18 @@ TEST_CASE( "INSERT/PRINT" )
     bst.insert( 5 );
 
     SECTION( "MULTIPLE VALUES" )
+    {
+        bst.print( sout );
+        REQUIRE( sout.str( ) == "0, 1, 2, 3, 4, 5, " );
+    }
+
+    bst.insert( 1 );
+    bst.insert( 2 );
+    bst.insert( 3 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    SECTION( "DUPLICATES" )
     {
         bst.print( sout );
         REQUIRE( sout.str( ) == "0, 1, 2, 3, 4, 5, " );

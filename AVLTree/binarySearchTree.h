@@ -22,7 +22,7 @@ class binarySearchTree
 
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
-        // to complete with AVL
+        // to complete with AVL ( utility )
         int upperBound( int keyBound ); // returns the smallest key in the tree such that key > x ( log n )
         int lowerBound( int keyBound ); // returns the smallest key that could also be equal ( log n )
         int keybyorder( int i ); // return the ith largest key ( log n )
