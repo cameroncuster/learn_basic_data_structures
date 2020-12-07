@@ -77,10 +77,10 @@ void binarySearchTree::insert( int x, node *&t )
 		t->left = nullptr;
 		t->right = nullptr;
 	}
-    else if( x < t->element )
-        insert( x, t->left );
-    else if( x > t->element )
-        insert( x, t->right );
+	else if( x < t->element )
+		insert( x, t->left );
+	else if( x > t->element )
+		insert( x, t->right );
 }
 
 
@@ -107,10 +107,18 @@ void binarySearchTree::remove( int x, node *&t )
     }
 	else
 	{
-        if( t->left == nullptr )
-            t = t->right;
-        else if( t->right == nullptr )
-            t = t->left;
+		if( t->left == nullptr )
+		{
+			node *temp = t->right;
+			delete t;
+			t = temp;
+		}
+		else if( t->right == nullptr )
+		{
+			node *temp = t->left;
+			delete t;
+			t = temp;
+		}
 	}
 }
 
