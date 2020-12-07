@@ -7,9 +7,24 @@ binarySearchTree::binarySearchTree( )
 
 
 
+binarySearchTree::binarySearchTree( const binarySearchTree &t )
+{
+	// skeleton
+}
+
+
+
 binarySearchTree::~binarySearchTree( )
 {
 	makeEmpty( root );
+}
+
+
+
+const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
+{
+    // skeleton
+    return rhs;
 }
 
 
@@ -18,7 +33,7 @@ int binarySearchTree::findMin( )
 {
 	if( findMin( root ) != nullptr )
 		return findMin( root )->element;
-	return 0;
+	return NULL;
 }
 
 
@@ -27,7 +42,7 @@ int binarySearchTree::findMax( )
 {
 	if( findMax( root ) != nullptr )
 		return findMax( root )->element;
-	return 0;
+	return NULL;
 }
 
 
@@ -147,20 +162,6 @@ bool binarySearchTree::contains( int x, node *t )
 void binarySearchTree::print( ostream &out )
 {
 	print( root, out );
-}
-
-
-
-binarySearchTree::binarySearchTree( const binarySearchTree &t )
-{
-}
-
-
-
-const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
-{
-	// skeleton
-	return rhs;
 }
 
 

@@ -100,7 +100,7 @@ TEST_CASE( "FINDMIN" )
     
     stringstream sout;
 
-    REQUIRE( bst.findMin( ) == 0 );
+    REQUIRE( bst.findMin( ) == NULL );
 
     bst.insert( 3 );
     bst.insert( 1 );
@@ -117,7 +117,7 @@ TEST_CASE( "FINDMAX" )
     
     stringstream sout;
 
-    REQUIRE( bst.findMax( ) == 0 );
+    REQUIRE( bst.findMax( ) == NULL );
 
     bst.insert( 3 );
     bst.insert( 1 );
