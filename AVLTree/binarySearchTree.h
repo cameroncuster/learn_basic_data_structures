@@ -34,6 +34,7 @@ class binarySearchTree
             int element;
             node *left;
             node *right;
+            int height;
         };
         node *root;
 
