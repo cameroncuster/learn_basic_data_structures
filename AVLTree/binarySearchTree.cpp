@@ -39,7 +39,7 @@ TEST_CASE( "INSERT/PRINT" )
 
     bst.insert( 0 );
 
-    SECTION( "VALUE" )
+    SECTION( "SINGLE VALUE" )
     {
         bst.print( sout );
         REQUIRE( sout.str( ) == "0, " );
@@ -51,7 +51,7 @@ TEST_CASE( "INSERT/PRINT" )
     bst.insert( 4 );
     bst.insert( 5 );
 
-    SECTION( "VALUES" )
+    SECTION( "MULTIPLE VALUES" )
     {
         bst.print( sout );
         REQUIRE( sout.str( ) == "0, 1, 2, 3, 4, 5, " );
@@ -69,7 +69,7 @@ TEST_CASE( "CONTAINS" )
 
     bst.insert( 0 );
 
-    SECTION( "VALUE" )
+    SECTION( "SINGLE VALUE" )
     {
         REQUIRE( bst.contains( 0 ) == true );
         REQUIRE( bst.contains( 1 ) == false );
@@ -81,7 +81,7 @@ TEST_CASE( "CONTAINS" )
     bst.insert( 4 );
     bst.insert( 5 );
     
-    SECTION( "VALUES" )
+    SECTION( "MULTIPLE VALUES" )
     {
         REQUIRE( bst.contains( 6 ) == false );
         REQUIRE( bst.contains( 0 ) == true );
@@ -196,5 +196,45 @@ TEST_CASE( "REMOVE" )
     {
         bst.print( sout );
         REQUIRE( sout.str( ) == "1, 2, 4, 5, " );
+    }
+}
+
+TEST_CASE( "COPY CONSTRUCTOR" )
+{
+    binarySearchTree bst;
+
+    stringstream sout;
+    stringstream soutcpy;
+
+    SECTION( "EMPTY" )
+    {
+        binarySearchTree bstcpy( bst );
+        bst.print( sout );
+        bstcpy.print( soutcpy );
+        REQUIRE( sout.str( ) == soutcpy.str( ) );
+    }
+
+    bst.insert( 0 );
+
+    SECTION( "SINGLE VALUE" )
+    {
+        binarySearchTree bstcpy( bst );
+        bst.print( sout );
+        bstcpy.print( soutcpy );
+        REQUIRE( sout.str( ) == soutcpy.str( ) );
+    }
+
+    bst.insert( 3 );
+    bst.insert( 2 );
+    bst.insert( 1 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    SECTION( "MULTIPLE VALUES" )
+    {
+        binarySearchTree bstcpy( bst );
+        bst.print( sout );
+        bstcpy.print( soutcpy );
+        REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
 }
