@@ -363,12 +363,12 @@ TEST_CASE( "BST VS STL" )
     {
         srand( time( NULL ) );
         num = rand( ) % 100;
-        if( num % 2 == 0 )
+        if( i % 2 == 0 )
         {
             bst.insert( num );
             bstcpy.insert( num );
         }
-        else if( num % 2 == 1 )
+        else if( i % 2 == 1 )
         {
             bst.remove( num );
             bstcpy.erase( num );
