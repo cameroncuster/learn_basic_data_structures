@@ -47,14 +47,14 @@ const int binarySearchTree::findMax( ) const
 
 
 
-void binarySearchTree::makeEmpty( )
+const void binarySearchTree::makeEmpty( )
 {
 	makeEmpty( root );
 }
 
 
 
-void binarySearchTree::makeEmpty( node *&t )
+const void binarySearchTree::makeEmpty( node *&t )
 {
 	if( t != nullptr )
 	{
@@ -67,21 +67,21 @@ void binarySearchTree::makeEmpty( node *&t )
 
 
 
-bool binarySearchTree::isEmpty( ) const
+const bool binarySearchTree::isEmpty( ) const
 {
 	return root == nullptr;
 }
 
 
 
-void binarySearchTree::insert( const int x )
+const void binarySearchTree::insert( const int x )
 {
 	insert( x, root );
 }
 
 
 
-void binarySearchTree::insert( const int x, node *&t ) const
+const void binarySearchTree::insert( const int x, node *&t ) const
 {
 	if( t == nullptr )
 	{
@@ -100,14 +100,14 @@ void binarySearchTree::insert( const int x, node *&t ) const
 
 
 
-void binarySearchTree::remove( const int x )
+const void binarySearchTree::remove( const int x )
 {
 	remove( x, root );
 }
 
 
 
-void binarySearchTree::remove( const int x, node *&t ) const
+const void binarySearchTree::remove( const int x, node *&t ) const
 {
 	if( t == nullptr )
 		return;
@@ -139,7 +139,7 @@ void binarySearchTree::remove( const int x, node *&t ) const
 
 
 
-bool binarySearchTree::contains( const int &x ) const
+const bool binarySearchTree::contains( const int &x ) const
 {
 	return contains( x, root );
 }
@@ -159,14 +159,14 @@ bool binarySearchTree::contains( const int x, const node *t ) const
 
 
 
-void binarySearchTree::print( ostream &out ) const
+const void binarySearchTree::print( ostream &out ) const
 {
 	print( root, out );
 }
 
 
 
-void binarySearchTree::print( const node *t, ostream &out, string seperator ) const
+void binarySearchTree::print( const node *t, ostream &out, const string seperator ) const
 {
 	if( t == nullptr )
 		return;

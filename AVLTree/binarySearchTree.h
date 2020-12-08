@@ -10,15 +10,15 @@ class binarySearchTree
         binarySearchTree( const binarySearchTree &t );
         ~binarySearchTree( );
 
+        const bool isEmpty( ) const;
+        const void insert( const int x );
+        const void remove( const int x );
+        const bool contains( const int &x ) const;
+        const void makeEmpty( );
+        const void print( ostream &out ) const;
+
         const int findMin( ) const;
         const int findMax( ) const;
-        bool contains( const int &x ) const;
-        bool isEmpty( ) const;
-        void print( ostream &out ) const;
-
-        void makeEmpty( );
-        void insert( const int x );
-        void remove( const int x );
 
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
@@ -38,11 +38,14 @@ class binarySearchTree
         };
         node *root;
 
-        void insert( const int x, node *&t ) const;
-        void remove( const int x, node *&t ) const;
+        const void insert( const int x, node *&t ) const;
+        const void remove( const int x, node *&t ) const;
+        bool contains( const int x, const node *t ) const;
+        const void makeEmpty( node *&t );
+        void print( const node *t, ostream &out, const string seperator = ", " ) const;
 
-        // internal method
-        node *findMin( node *t ) const
+        // internal methods of finding the min and max in a subtree
+        const node *findMin( const node *t ) const
         {
             if( t == nullptr )
                 return nullptr;
@@ -51,7 +54,7 @@ class binarySearchTree
             return findMin( t->left );
         }
 
-        node *findMax( node *t ) const
+        const node *findMax( const node *t ) const
         {
             if( t == nullptr )
                 return nullptr;
@@ -59,10 +62,6 @@ class binarySearchTree
                 return t;
             return findMax( t->right );
         }
-
-        bool contains( const int x, const node *t ) const;
-        void makeEmpty( node *&t );
-        void print( const node *t, ostream &out, string seperator = ", " ) const;
 
         // internal method of copying the tree
         node *clone( const node *t ) const
