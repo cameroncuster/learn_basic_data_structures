@@ -1,7 +1,6 @@
 #include "..//catch.hpp"
 #include "binarySearchTree.h"
 
-// insert and remove duplicates
 // test remove on specific cases and step through every possibility
 // loop 1000 times and randomly insert/remove a number from the tree
 // number is 1 to 100 random
@@ -209,6 +208,24 @@ TEST_CASE( "REMOVE" )
     {
         bst.print( sout );
         REQUIRE( sout.str( ) == "1, 2, 4, 5, " );
+    }
+
+    bst.insert( 6 );
+    bst.insert( 7 );
+    bst.insert( 8 );
+    bst.insert( 0 );
+    bst.insert( 13 );
+    bst.insert( 31 );
+    bst.insert( -1 );
+
+    bst.remove( 31 );
+    bst.remove( 0 );
+    bst.remove( 6 );
+
+    SECTION( "VALUE1" )
+    {
+        bst.print( sout );
+        REQUIRE( sout.str( ) == "-1, 1, 2, 4, 5, 7, 8, 13, " );
     }
 }
 
