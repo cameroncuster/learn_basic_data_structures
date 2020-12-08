@@ -360,9 +360,9 @@ TEST_CASE( "BST VS STL" )
         REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
 
-    for( i = 0; i < 999; i++ )
+    for( i = 0; i < 2000001; i++ )
     {
-        num = ( rand( ) % 100 );
+        num = ( rand( ) % 2000 );
         if( i % 2 == 0 )
         {
             bst.insert( num );
