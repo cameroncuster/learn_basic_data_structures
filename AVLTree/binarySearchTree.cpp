@@ -307,4 +307,12 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
+
+    SECTION( "SAME TREES" )
+    {
+    }
+
+    SECTION( "TREE WITH VALUES" )
+    {
+    }
 }

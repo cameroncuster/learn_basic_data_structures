@@ -10,15 +10,15 @@ class binarySearchTree
         binarySearchTree( const binarySearchTree &t );
         ~binarySearchTree( );
 
-        int findMin( );
-        int findMax( );
-        bool contains( int x );
+        const int findMin( ) const;
+        const int findMax( ) const;
+        bool contains( const int &x ) const;
         bool isEmpty( ) const;
-        void print( ostream &out );
+        void print( ostream &out ) const;
 
         void makeEmpty( );
-        void insert( int x );
-        void remove( int x );
+        void insert( const int x );
+        void remove( const int x );
 
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
@@ -38,11 +38,11 @@ class binarySearchTree
         };
         node *root;
 
-        void insert( int x, node *&t );
-        void remove( int x, node *&t );
+        void insert( const int x, node *&t ) const;
+        void remove( const int x, node *&t ) const;
 
         // internal method
-        node *findMin( node *t )
+        node *findMin( node *t ) const
         {
             if( t == nullptr )
                 return nullptr;
@@ -51,7 +51,7 @@ class binarySearchTree
             return findMin( t->left );
         }
 
-        node *findMax( node *t )
+        node *findMax( node *t ) const
         {
             if( t == nullptr )
                 return nullptr;
@@ -60,12 +60,12 @@ class binarySearchTree
             return findMax( t->right );
         }
 
-        bool contains( int x, node *t );
+        bool contains( const int x, node *t ) const;
         void makeEmpty( node *&t );
-        void print( node *&t, ostream &out, string seperator = ", " );
+        void print( const node *t, ostream &out, string seperator = ", " ) const;
 
         // internal method of copying the tree
-        node *clone( node *t ) 
+        node *clone( node *t ) const
         {
             if( t == nullptr )
                 return nullptr;

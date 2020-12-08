@@ -29,7 +29,7 @@ const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs
 
 
 
-int binarySearchTree::findMin( )
+const int binarySearchTree::findMin( ) const
 {
 	if( findMin( root ) != nullptr )
 		return findMin( root )->element;
@@ -38,7 +38,7 @@ int binarySearchTree::findMin( )
 
 
 
-int binarySearchTree::findMax( )
+const int binarySearchTree::findMax( ) const
 {
 	if( findMax( root ) != nullptr )
 		return findMax( root )->element;
@@ -74,14 +74,14 @@ bool binarySearchTree::isEmpty( ) const
 
 
 
-void binarySearchTree::insert( int x )
+void binarySearchTree::insert( const int x )
 {
 	insert( x, root );
 }
 
 
 
-void binarySearchTree::insert( int x, node *&t )
+void binarySearchTree::insert( const int x, node *&t ) const
 {
 	if( t == nullptr )
 	{
@@ -100,14 +100,14 @@ void binarySearchTree::insert( int x, node *&t )
 
 
 
-void binarySearchTree::remove( int x )
+void binarySearchTree::remove( const int x )
 {
 	remove( x, root );
 }
 
 
 
-void binarySearchTree::remove( int x, node *&t )
+void binarySearchTree::remove( const int x, node *&t ) const
 {
 	if( t == nullptr )
 		return;
@@ -139,14 +139,14 @@ void binarySearchTree::remove( int x, node *&t )
 
 
 
-bool binarySearchTree::contains( int x )
+bool binarySearchTree::contains( const int &x ) const
 {
 	return contains( x, root );
 }
 
 
 
-bool binarySearchTree::contains( int x, node *t )
+bool binarySearchTree::contains( const int x, node *t ) const
 {
 	if( t == nullptr )
 		return false;
@@ -159,14 +159,14 @@ bool binarySearchTree::contains( int x, node *t )
 
 
 
-void binarySearchTree::print( ostream &out )
+void binarySearchTree::print( ostream &out ) const
 {
 	print( root, out );
 }
 
 
 
-void binarySearchTree::print( node *&t, ostream &out, string seperator )
+void binarySearchTree::print( const node *t, ostream &out, string seperator ) const
 {
 	if( t == nullptr )
 		return;
