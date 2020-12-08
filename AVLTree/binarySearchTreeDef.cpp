@@ -146,7 +146,7 @@ bool binarySearchTree::contains( const int &x ) const
 
 
 
-bool binarySearchTree::contains( const int x, node *t ) const
+bool binarySearchTree::contains( const int x, const node *t ) const
 {
 	if( t == nullptr )
 		return false;

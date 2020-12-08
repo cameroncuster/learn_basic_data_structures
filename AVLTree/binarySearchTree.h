@@ -60,12 +60,12 @@ class binarySearchTree
             return findMax( t->right );
         }
 
-        bool contains( const int x, node *t ) const;
+        bool contains( const int x, const node *t ) const;
         void makeEmpty( node *&t );
         void print( const node *t, ostream &out, string seperator = ", " ) const;
 
         // internal method of copying the tree
-        node *clone( node *t ) const
+        node *clone( const node *t ) const
         {
             if( t == nullptr )
                 return nullptr;
