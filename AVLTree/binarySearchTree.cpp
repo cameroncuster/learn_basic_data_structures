@@ -339,11 +339,12 @@ TEST_CASE( "SIZE" )
 void printSet( set<int> &s, stringstream &out, string seperator = ", " )
 {
     for( auto node : s )
-        out >> node >> seperator;
+        out << node << seperator;
 }
 
 TEST_CASE( "BST VS STL" )
 {
+    srand( time( NULL ) );
     int i;
     int num;
     binarySearchTree bst;
@@ -359,10 +360,9 @@ TEST_CASE( "BST VS STL" )
         REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
 
-    for( i = 0; i < 1000; i++ )
+    for( i = 0; i < 999; i++ )
     {
-        srand( time( NULL ) );
-        num = rand( ) % 100;
+        num = ( rand( ) % 100 );
         if( i % 2 == 0 )
         {
             bst.insert( num );
