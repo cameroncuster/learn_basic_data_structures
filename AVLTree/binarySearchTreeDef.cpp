@@ -19,7 +19,7 @@ binarySearchTree::binarySearchTree( const binarySearchTree &t )
 
 binarySearchTree::~binarySearchTree( )
 {
-	makeEmpty( root );
+	clear( root );
 }
 
 
@@ -27,7 +27,7 @@ binarySearchTree::~binarySearchTree( )
 /** ***************************************************************************
 * appends
 * ****************************************************************************/
-void binarySearchTree::insert( const int x, node *&t ) const
+void binarySearchTree::insert( const int &x, node *&t ) const
 {
 	if( t == nullptr )
 	{
@@ -46,14 +46,14 @@ void binarySearchTree::insert( const int x, node *&t ) const
 
 
 
-void binarySearchTree::insert( const int x )
+void binarySearchTree::insert( const int &x )
 {
 	insert( x, root );
 }
 
 
 
-void binarySearchTree::remove( const int x, node *&t ) const
+void binarySearchTree::remove( const int &x, node *&t ) const
 {
 	if( t == nullptr )
 		return;
@@ -85,19 +85,19 @@ void binarySearchTree::remove( const int x, node *&t ) const
 
 
 
-void binarySearchTree::remove( const int x )
+void binarySearchTree::remove( const int &x )
 {
 	remove( x, root );
 }
 
 
 
-void binarySearchTree::makeEmpty( node *&t )
+void binarySearchTree::clear( node *&t )
 {
 	if( t != nullptr )
 	{
-		makeEmpty( t->left );
-		makeEmpty( t->right );
+		clear( t->left );
+		clear( t->right );
 		delete t;
 	}
 	t = nullptr;
@@ -105,9 +105,9 @@ void binarySearchTree::makeEmpty( node *&t )
 
 
 
-void binarySearchTree::makeEmpty( )
+void binarySearchTree::clear( )
 {
-	makeEmpty( root );
+	clear( root );
 }
 
 
@@ -122,7 +122,7 @@ const bool binarySearchTree::isEmpty( ) const
 
 
 
-bool binarySearchTree::contains( const int x, const node *t ) const
+const bool binarySearchTree::contains( const int x, const node *t ) const
 {
 	if( t == nullptr )
 		return false;
@@ -190,6 +190,6 @@ const int binarySearchTree::findMax( ) const
 * ****************************************************************************/
 const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
 {
-	makeEmpty( );
+	clear( );
 	return binarySearchTree( rhs );
 }

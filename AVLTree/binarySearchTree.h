@@ -12,9 +12,9 @@ class binarySearchTree
         ~binarySearchTree( );
 
         // appends
-        void insert( const int x );
-        void remove( const int x );
-        void makeEmpty( );
+        void insert( const int &x );
+        void remove( const int &x );
+        void clear( );
 
         // checks
         const bool isEmpty( ) const;
@@ -47,12 +47,12 @@ class binarySearchTree
         node *root;
 
         // private append routines
-        void insert( const int x, node *&t ) const;
-        void remove( const int x, node *&t ) const;
-        void makeEmpty( node *&t );
+        void insert( const int &x, node *&t ) const;
+        void remove( const int &x, node *&t ) const;
+        void clear( node *&t );
 
         // check
-        bool contains( const int x, const node *t ) const;
+        const bool contains( const int x, const node *t ) const;
 
         // print routine for debugging
         void print( const node *t, ostream &out, const string seperator = ", " ) const;

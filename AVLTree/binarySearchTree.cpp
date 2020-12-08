@@ -4,7 +4,7 @@
 // test remove on specific cases and step through every possibility
 // loop 1000 times and randomly insert/remove a number from the tree
 // number is 1 to 100 random
-// compare the output to an STL set, ensure they match
+// compare the output to an STL set ( ensure they match )
 TEST_CASE( "CONSTRUCTOR" )
 {
     binarySearchTree bst;
