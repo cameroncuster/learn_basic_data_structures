@@ -16,18 +16,17 @@ class binarySearchTree
         void remove( const int &x );
         void clear( );
 
-        // checks
+        // verification
         const bool isEmpty( ) const;
         const bool contains( const int &x ) const;
-
-        // finds
+        const int size( ) const;
         const int findMin( ) const;
         const int findMax( ) const;
 
         // overloaded operators
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
-        // debugging
+        // print routine for debugging
         void print( ostream &out ) const;
 
         // to complete with AVL ( utilities )
@@ -40,9 +39,9 @@ class binarySearchTree
         struct node
         {
             int element;
+            int height;
             node *left;
             node *right;
-            int height;
         };
         node *root;
 
@@ -51,8 +50,9 @@ class binarySearchTree
         void remove( const int &x, node *&t ) const;
         void clear( node *&t );
 
-        // check
+        // verification 
         const bool contains( const int x, const node *t ) const;
+        const int size( const node *t ) const;
 
         // print routine for debugging
         void print( const node *t, ostream &out, const string seperator = ", " ) const;

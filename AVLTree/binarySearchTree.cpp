@@ -1,3 +1,6 @@
+#include <set>
+#include <ctime>
+#include <random>
 #include "..//catch.hpp"
 #include "binarySearchTree.h"
 
@@ -314,5 +317,68 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
 
     SECTION( "TREE WITH VALUES" )
     {
+    }
+}
+
+TEST_CASE( "SIZE" )
+{
+    binarySearchTree bst;
+
+    REQUIRE( bst.size( ) == NULL );
+
+    bst.insert( 0 );
+    bst.insert( 3 );
+    bst.insert( 2 );
+    bst.insert( 1 );
+    bst.insert( 4 );
+    bst.insert( 5 );
+
+    REQUIRE( bst.size( ) == 6 );
+}
+
+void printSet( set<int> &s, stringstream &out, string seperator = ", " )
+{
+    for( auto node : s )
+        out >> node >> seperator;
+}
+
+TEST_CASE( "BST VS STL" )
+{
+    int i;
+    int num;
+    binarySearchTree bst;
+    set<int> bstcpy;
+
+    stringstream sout;
+    stringstream soutcpy;
+
+    SECTION( "EMPTY" )
+    {
+        bst.print( sout );
+        printSet( bstcpy, soutcpy );
+        REQUIRE( sout.str( ) == soutcpy.str( ) );
+    }
+
+    for( i = 0; i < 1000; i++ )
+    {
+        srand( time( NULL ) );
+        num = rand( ) % 100;
+        if( num % 2 == 0 )
+        {
+            bst.insert( num );
+            bstcpy.insert( num );
+        }
+        else if( num % 2 == 1 )
+        {
+            bst.remove( num );
+            bstcpy.erase( num );
+        }
+    }
+
+    SECTION( "VALUES" )
+    {
+        bst.print( sout );
+        printSet( bstcpy, soutcpy );
+        REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
 }

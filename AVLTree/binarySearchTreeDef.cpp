@@ -142,6 +142,40 @@ const bool binarySearchTree::contains( const int &x ) const
 
 
 
+const int binarySearchTree::size( const node *t ) const
+{
+	if( t == nullptr )
+		return NULL;
+	return size( t->left ) + 1 + size( t->right );
+}
+
+
+
+const int binarySearchTree::size( ) const
+{
+	return size( root );
+}
+
+
+
+const int binarySearchTree::findMin( ) const
+{
+	if( findMin( root ) != nullptr )
+		return findMin( root )->element;
+	return NULL;
+}
+
+
+
+const int binarySearchTree::findMax( ) const
+{
+	if( findMax( root ) != nullptr )
+		return findMax( root )->element;
+	return NULL;
+}
+
+
+
 /** ***************************************************************************
 * debugging
 * ****************************************************************************/
@@ -160,27 +194,6 @@ void binarySearchTree::print( const node *t, ostream &out, const string seperato
 void binarySearchTree::print( ostream &out ) const
 {
 	print( root, out );
-}
-
-
-
-/** ***************************************************************************
-* finds
-* ****************************************************************************/
-const int binarySearchTree::findMin( ) const
-{
-	if( findMin( root ) != nullptr )
-		return findMin( root )->element;
-	return NULL;
-}
-
-
-
-const int binarySearchTree::findMax( ) const
-{
-	if( findMax( root ) != nullptr )
-		return findMax( root )->element;
-	return NULL;
 }
 
 
