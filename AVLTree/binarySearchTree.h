@@ -2,27 +2,35 @@
 #include <sstream>
 using namespace std;
 
-// implement as an STL version set
+// STL implementation of MAP or SET
 class binarySearchTree
 {
 	public:
+        // constructor and destructor
         binarySearchTree( );
         binarySearchTree( const binarySearchTree &t );
         ~binarySearchTree( );
 
-        const bool isEmpty( ) const;
+        // appends
         void insert( const int x );
         void remove( const int x );
-        const bool contains( const int &x ) const;
         void makeEmpty( );
-        void print( ostream &out ) const;
 
+        // checks
+        const bool isEmpty( ) const;
+        const bool contains( const int &x ) const;
+
+        // finds
         const int findMin( ) const;
         const int findMax( ) const;
 
+        // overloaded operators
         const binarySearchTree &operator=( const binarySearchTree &rhs );
 
-        // to complete with AVL ( utility )
+        // debugging
+        void print( ostream &out ) const;
+
+        // to complete with AVL ( utilities )
         int upperBound( int keyBound ); // returns the smallest key in the tree such that key > x ( log n )
         int lowerBound( int keyBound ); // returns the smallest key that could also be equal ( log n )
         int keybyorder( int i ); // return the ith largest key ( log n )
@@ -38,10 +46,15 @@ class binarySearchTree
         };
         node *root;
 
+        // private append routines
         void insert( const int x, node *&t ) const;
         void remove( const int x, node *&t ) const;
-        bool contains( const int x, const node *t ) const;
         void makeEmpty( node *&t );
+
+        // check
+        bool contains( const int x, const node *t ) const;
+
+        // print routine for debugging
         void print( const node *t, ostream &out, const string seperator = ", " ) const;
 
         // internal methods of finding the min and max in a subtree
@@ -54,6 +67,8 @@ class binarySearchTree
             return findMin( t->left );
         }
 
+
+
         const node *findMax( const node *t ) const
         {
             if( t == nullptr )
@@ -62,6 +77,8 @@ class binarySearchTree
                 return t;
             return findMax( t->right );
         }
+
+
 
         // internal method of copying the tree
         node *clone( const node *t ) const

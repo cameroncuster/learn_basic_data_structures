@@ -1,5 +1,8 @@
 #include "binarySearchTree.h"
 
+/** ***************************************************************************
+* constructor and destructor
+* ****************************************************************************/
 binarySearchTree::binarySearchTree( )
 {
 	root = nullptr;
@@ -21,66 +24,9 @@ binarySearchTree::~binarySearchTree( )
 
 
 
-const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
-{
-	makeEmpty( );
-	return binarySearchTree( rhs );
-}
-
-
-
-const int binarySearchTree::findMin( ) const
-{
-	if( findMin( root ) != nullptr )
-		return findMin( root )->element;
-	return NULL;
-}
-
-
-
-const int binarySearchTree::findMax( ) const
-{
-	if( findMax( root ) != nullptr )
-		return findMax( root )->element;
-	return NULL;
-}
-
-
-
-void binarySearchTree::makeEmpty( )
-{
-	makeEmpty( root );
-}
-
-
-
-void binarySearchTree::makeEmpty( node *&t )
-{
-	if( t != nullptr )
-	{
-		makeEmpty( t->left );
-		makeEmpty( t->right );
-		delete t;
-	}
-	t = nullptr;
-}
-
-
-
-const bool binarySearchTree::isEmpty( ) const
-{
-	return root == nullptr;
-}
-
-
-
-void binarySearchTree::insert( const int x )
-{
-	insert( x, root );
-}
-
-
-
+/** ***************************************************************************
+* appends
+* ****************************************************************************/
 void binarySearchTree::insert( const int x, node *&t ) const
 {
 	if( t == nullptr )
@@ -100,9 +46,9 @@ void binarySearchTree::insert( const int x, node *&t ) const
 
 
 
-void binarySearchTree::remove( const int x )
+void binarySearchTree::insert( const int x )
 {
-	remove( x, root );
+	insert( x, root );
 }
 
 
@@ -139,9 +85,39 @@ void binarySearchTree::remove( const int x, node *&t ) const
 
 
 
-const bool binarySearchTree::contains( const int &x ) const
+void binarySearchTree::remove( const int x )
 {
-	return contains( x, root );
+	remove( x, root );
+}
+
+
+
+void binarySearchTree::makeEmpty( node *&t )
+{
+	if( t != nullptr )
+	{
+		makeEmpty( t->left );
+		makeEmpty( t->right );
+		delete t;
+	}
+	t = nullptr;
+}
+
+
+
+void binarySearchTree::makeEmpty( )
+{
+	makeEmpty( root );
+}
+
+
+
+/** ***************************************************************************
+* verification
+* ****************************************************************************/
+const bool binarySearchTree::isEmpty( ) const
+{
+	return root == nullptr;
 }
 
 
@@ -159,13 +135,16 @@ bool binarySearchTree::contains( const int x, const node *t ) const
 
 
 
-void binarySearchTree::print( ostream &out ) const
+const bool binarySearchTree::contains( const int &x ) const
 {
-	print( root, out );
+	return contains( x, root );
 }
 
 
 
+/** ***************************************************************************
+* debugging
+* ****************************************************************************/
 void binarySearchTree::print( const node *t, ostream &out, const string seperator ) const
 {
 	if( t == nullptr )
@@ -174,4 +153,43 @@ void binarySearchTree::print( const node *t, ostream &out, const string seperato
     print( t->left, out );
 	out << t->element << seperator;
     print( t->right, out );
+}
+
+
+
+void binarySearchTree::print( ostream &out ) const
+{
+	print( root, out );
+}
+
+
+
+/** ***************************************************************************
+* finds
+* ****************************************************************************/
+const int binarySearchTree::findMin( ) const
+{
+	if( findMin( root ) != nullptr )
+		return findMin( root )->element;
+	return NULL;
+}
+
+
+
+const int binarySearchTree::findMax( ) const
+{
+	if( findMax( root ) != nullptr )
+		return findMax( root )->element;
+	return NULL;
+}
+
+
+
+/** ***************************************************************************
+* overloaded operators
+* ****************************************************************************/
+const binarySearchTree &binarySearchTree::operator=( const binarySearchTree &rhs ) 
+{
+	makeEmpty( );
+	return binarySearchTree( rhs );
 }
