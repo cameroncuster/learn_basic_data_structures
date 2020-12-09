@@ -39,9 +39,9 @@ class binarySearchTree
         struct node
         {
             int element;
-            int height;
             node *left;
             node *right;
+            int height;
         };
         int nodeCount;
         node *root;

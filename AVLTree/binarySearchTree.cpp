@@ -366,7 +366,7 @@ TEST_CASE( "BST VS STL" )
     }
 
     // 9000001
-    for( i = 0; i < 100001; i++ )
+    for( i = 0; i < 9000001; i++ )
     {
         num = ( rand( ) % 2000 );
         if( i % 2 == 0 )
