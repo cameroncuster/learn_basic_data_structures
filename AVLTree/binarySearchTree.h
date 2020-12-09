@@ -13,12 +13,12 @@ class binarySearchTree
 
         // appends
         void insert( const int &x );
-        void remove( const int &x );
+        void erase( const int &x );
         void clear( );
 
         // verification
-        const bool isEmpty( ) const;
-        const bool contains( const int &x ) const;
+        const bool empty( ) const;
+        const bool count( const int &x ) const;
         const int size( ) const;
         const int findMin( ) const;
         const int findMax( ) const;
@@ -43,15 +43,16 @@ class binarySearchTree
             node *left;
             node *right;
         };
+        int nodeCount;
         node *root;
 
         // private append routines
-        void insert( const int &x, node *&t ) const;
-        void remove( const int &x, node *&t ) const;
+        void insert( const int &x, node *&t );
+        void erase( const int &x, node *&t );
         void clear( node *&t );
 
         // verification 
-        const bool contains( const int x, const node *t ) const;
+        const bool count( const int x, const node *t ) const;
         const int size( const node *t ) const;
 
         // print routine for debugging

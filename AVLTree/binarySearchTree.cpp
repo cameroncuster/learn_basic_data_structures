@@ -4,15 +4,11 @@
 #include "..//catch.hpp"
 #include "binarySearchTree.h"
 
-// test remove on specific cases and step through every possibility
-// loop 1000 times and randomly insert/remove a number from the tree
-// number is 1 to 100 random
-// compare the output to an STL set ( ensure they match )
 TEST_CASE( "CONSTRUCTOR" )
 {
     binarySearchTree bst;
 
-    REQUIRE( bst.isEmpty( ) == true );
+    REQUIRE( bst.empty( ) == true );
 }
 
 TEST_CASE( "ISEMPTY" )
@@ -21,11 +17,11 @@ TEST_CASE( "ISEMPTY" )
 
     stringstream sout;
     
-    REQUIRE( bst.isEmpty( ) == true );
+    REQUIRE( bst.empty( ) == true );
     
     bst.insert( 0 );
 
-    REQUIRE( bst.isEmpty( ) == false );
+    REQUIRE( bst.empty( ) == false );
 }
 
 TEST_CASE( "INSERT/PRINT" )
@@ -73,21 +69,21 @@ TEST_CASE( "INSERT/PRINT" )
     }
 }
 
-TEST_CASE( "CONTAINS" )
+TEST_CASE( "count" )
 {
     binarySearchTree bst;
 
     SECTION( "EMPTY" )
     {
-        REQUIRE( bst.contains( 0 ) == false );
+        REQUIRE( bst.count( 0 ) == false );
     }
 
     bst.insert( 0 );
 
     SECTION( "SINGLE VALUE" )
     {
-        REQUIRE( bst.contains( 0 ) == true );
-        REQUIRE( bst.contains( 1 ) == false );
+        REQUIRE( bst.count( 0 ) == true );
+        REQUIRE( bst.count( 1 ) == false );
     }
 
     bst.insert( 1 );
@@ -98,14 +94,14 @@ TEST_CASE( "CONTAINS" )
     
     SECTION( "MULTIPLE VALUES" )
     {
-        REQUIRE( bst.contains( 6 ) == false );
-        REQUIRE( bst.contains( 0 ) == true );
-        REQUIRE( bst.contains( 1 ) == true );
-        REQUIRE( bst.contains( 2 ) == true );
-        REQUIRE( bst.contains( 3 ) == true );
-        REQUIRE( bst.contains( 4 ) == true );
-        REQUIRE( bst.contains( 5 ) == true );
-        REQUIRE( bst.contains( 7 ) == false );
+        REQUIRE( bst.count( 6 ) == false );
+        REQUIRE( bst.count( 0 ) == true );
+        REQUIRE( bst.count( 1 ) == true );
+        REQUIRE( bst.count( 2 ) == true );
+        REQUIRE( bst.count( 3 ) == true );
+        REQUIRE( bst.count( 4 ) == true );
+        REQUIRE( bst.count( 5 ) == true );
+        REQUIRE( bst.count( 7 ) == false );
     }
 }
 
@@ -143,13 +139,13 @@ TEST_CASE( "FINDMAX" )
     REQUIRE( bst.findMax( ) == 5 );
 }
 
-TEST_CASE( "REMOVE" )
+TEST_CASE( "erase" )
 {
     binarySearchTree bst;
 
     stringstream sout;
 
-    bst.remove( 0 );
+    bst.erase( 0 );
 
     SECTION( "EMPTY" )
     {
@@ -159,7 +155,7 @@ TEST_CASE( "REMOVE" )
 
     bst.insert( 0 );
 
-    bst.remove( 0 );
+    bst.erase( 0 );
 
     SECTION( "VALUE TO EMPTY" )
     {
@@ -173,7 +169,7 @@ TEST_CASE( "REMOVE" )
     bst.insert( 4 );
     bst.insert( 5 );
 
-    bst.remove( 1 );
+    bst.erase( 1 );
 
     SECTION( "VALUE BEGIN" )
     {
@@ -181,7 +177,7 @@ TEST_CASE( "REMOVE" )
         REQUIRE( sout.str( ) == "2, 3, 4, 5, " );
     }
 
-    bst.remove( 5 );
+    bst.erase( 5 );
 
     SECTION( "VALUE END" )
     {
@@ -189,7 +185,7 @@ TEST_CASE( "REMOVE" )
         REQUIRE( sout.str( ) == "2, 3, 4, " );
     }
 
-    bst.remove( 3 );
+    bst.erase( 3 );
 
     SECTION( "VALUE" )
     {
@@ -205,7 +201,7 @@ TEST_CASE( "REMOVE" )
     bst.insert( 4 );
     bst.insert( 5 );
 
-    bst.remove( 3 );
+    bst.erase( 3 );
 
     SECTION( "VALUE1" )
     {
@@ -221,9 +217,9 @@ TEST_CASE( "REMOVE" )
     bst.insert( 31 );
     bst.insert( -1 );
 
-    bst.remove( 31 );
-    bst.remove( 0 );
-    bst.remove( 6 );
+    bst.erase( 31 );
+    bst.erase( 0 );
+    bst.erase( 6 );
 
     SECTION( "VALUE1" )
     {
@@ -350,6 +346,9 @@ TEST_CASE( "BST VS STL" )
     binarySearchTree bst;
     set<int> bstcpy;
 
+    set<int>::iterator max;
+    set<int>::iterator min;
+
     stringstream sout;
     stringstream soutcpy;
 
@@ -360,7 +359,8 @@ TEST_CASE( "BST VS STL" )
         REQUIRE( sout.str( ) == soutcpy.str( ) );
     }
 
-    for( i = 0; i < 2000001; i++ )
+    // 9000001
+    for( i = 0; i < 100001; i++ )
     {
         num = ( rand( ) % 2000 );
         if( i % 2 == 0 )
@@ -370,9 +370,17 @@ TEST_CASE( "BST VS STL" )
         }
         else if( i % 2 == 1 )
         {
-            bst.remove( num );
+            bst.erase( num );
             bstcpy.erase( num );
         }
+        CHECK( bst.empty( ) == bstcpy.empty( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
+        CHECK( bst.count( num ) == bstcpy.count( num ) );
+        min = bstcpy.begin( );
+        max = bstcpy.end( );
+        max--;
+        CHECK( bst.findMin( ) == *min );
+        CHECK( bst.findMax( ) == *max );
     }
 
     SECTION( "VALUES" )

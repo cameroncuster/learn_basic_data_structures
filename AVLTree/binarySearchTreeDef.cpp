@@ -6,6 +6,7 @@
 binarySearchTree::binarySearchTree( )
 {
 	root = nullptr;
+	nodeCount = 0;
 }
 
 
@@ -13,6 +14,7 @@ binarySearchTree::binarySearchTree( )
 binarySearchTree::binarySearchTree( const binarySearchTree &t )
 {
     root = clone( t.root );
+	nodeCount = 0;
 }
 
 
@@ -27,7 +29,7 @@ binarySearchTree::~binarySearchTree( )
 /** ***************************************************************************
 * appends
 * ****************************************************************************/
-void binarySearchTree::insert( const int &x, node *&t ) const
+void binarySearchTree::insert( const int &x, node *&t ) 
 {
 	if( t == nullptr )
 	{
@@ -37,6 +39,7 @@ void binarySearchTree::insert( const int &x, node *&t ) const
 		t->element = x;
 		t->left = nullptr;
 		t->right = nullptr;
+        nodeCount++;
 	}
 	else if( x < t->element )
 		insert( x, t->left );
@@ -53,18 +56,18 @@ void binarySearchTree::insert( const int &x )
 
 
 
-void binarySearchTree::remove( const int &x, node *&t ) const
+void binarySearchTree::erase( const int &x, node *&t )
 {
 	if( t == nullptr )
 		return;
 	if( x < t->element )
-		remove( x, t->left );
+		erase( x, t->left );
 	else if( x > t->element )
-		remove( x, t->right );
+		erase( x, t->right );
 	else if( t->left != nullptr && t->right != nullptr )
 	{
 		t->element = findMin( t->right )->element;
-		remove( t->element, t->right );
+		erase( t->element, t->right );
     }
 	else
 	{
@@ -80,14 +83,15 @@ void binarySearchTree::remove( const int &x, node *&t ) const
 			delete t;
 			t = temp;
 		}
+		nodeCount--;
 	}
 }
 
 
 
-void binarySearchTree::remove( const int &x )
+void binarySearchTree::erase( const int &x )
 {
-	remove( x, root );
+	erase( x, root );
 }
 
 
@@ -115,29 +119,29 @@ void binarySearchTree::clear( )
 /** ***************************************************************************
 * verification
 * ****************************************************************************/
-const bool binarySearchTree::isEmpty( ) const
+const bool binarySearchTree::empty( ) const
 {
 	return root == nullptr;
 }
 
 
 
-const bool binarySearchTree::contains( const int x, const node *t ) const
+const bool binarySearchTree::count( const int x, const node *t ) const
 {
 	if( t == nullptr )
 		return false;
 	else if( x < t->element )
-		return contains( x, t->left );
+		return count( x, t->left );
 	else if( x > t->element )
-		return contains( x, t->right );
+		return count( x, t->right );
     return true;
 }
 
 
 
-const bool binarySearchTree::contains( const int &x ) const
+const bool binarySearchTree::count( const int &x ) const
 {
-	return contains( x, root );
+	return count( x, root );
 }
 
 
@@ -146,7 +150,7 @@ const int binarySearchTree::size( const node *t ) const
 {
 	if( t == nullptr )
 		return NULL;
-	return size( t->left ) + 1 + size( t->right );
+	return nodeCount;
 }
 
 
