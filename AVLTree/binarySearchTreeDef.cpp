@@ -14,7 +14,7 @@ binarySearchTree::binarySearchTree( )
 binarySearchTree::binarySearchTree( const binarySearchTree &t )
 {
     root = clone( t.root );
-	nodeCount = 0;
+	nodeCount = t.nodeCount;
 }
 
 

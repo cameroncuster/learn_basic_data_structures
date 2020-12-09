@@ -241,6 +241,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 
     bst.insert( 0 );
@@ -251,6 +252,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 
     bst.insert( 3 );
@@ -265,6 +267,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 }
 
@@ -281,6 +284,7 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 
     bst.insert( 0 );
@@ -291,6 +295,7 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 
     bst.insert( 3 );
@@ -305,6 +310,7 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
         bst.print( sout );
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        CHECK( bst.size( ) == bstcpy.size( ) );
     }
 
     SECTION( "SAME TREES" )
