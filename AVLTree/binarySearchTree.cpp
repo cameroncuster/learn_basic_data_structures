@@ -358,15 +358,8 @@ TEST_CASE( "BST VS STL" )
     stringstream sout;
     stringstream soutcpy;
 
-    SECTION( "EMPTY" )
-    {
-        bst.print( sout );
-        printSet( bstcpy, soutcpy );
-        REQUIRE( sout.str( ) == soutcpy.str( ) );
-    }
-
     // 9000001
-    for( i = 0; i < 9000001; i++ )
+    for( i = 0; i < 10001; i++ )
     {
         num = ( rand( ) % 2000 );
         if( i % 2 == 0 )
@@ -387,12 +380,10 @@ TEST_CASE( "BST VS STL" )
         max--;
         CHECK( bst.findMin( ) == *min );
         CHECK( bst.findMax( ) == *max );
-    }
-
-    SECTION( "VALUES" )
-    {
         bst.print( sout );
         printSet( bstcpy, soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
+        sout.clear( );
+        soutcpy.clear( );
     }
 }

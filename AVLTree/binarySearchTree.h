@@ -46,6 +46,15 @@ class binarySearchTree
         int nodeCount;
         node *root;
 
+        // retrieve the height of a node
+        const int height( const node *t ) const;
+
+        // AVLTree rotation routines
+        void rotateWithLeftChild( node *&k2 );
+        void rotateWithRightChild( node *&k1 ); 
+        void doubleWithLeftChild( node *&k3 );
+        void doubleWithRightChild( node *&k1 );
+
         // private append routines
         void insert( const int &x, node *&t );
         void erase( const int &x, node *&t );

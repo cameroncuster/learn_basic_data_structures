@@ -27,6 +27,60 @@ binarySearchTree::~binarySearchTree( )
 
 
 /** ***************************************************************************
+* height
+* ****************************************************************************/
+const int binarySearchTree::height( const node *t ) const
+{
+	if( t == nullptr )
+		return -1;
+	return t->height;
+}
+
+
+
+/** ***************************************************************************
+* rotations
+* ****************************************************************************/
+void binarySearchTree::rotateWithLeftChild( node *&k2 )
+{
+	node *k1 = k2->left;
+	k2->left = k1->right;
+	k2->height = max( height( k2->left ), height( k2->right ) ) + 1;
+	k1->height = max( height( k2->left ), k2->height ) + 1;
+	k2 = k1;
+}
+
+
+
+void binarySearchTree::rotateWithRightChild( node *&k1 )
+{
+	node *k2 = k1->right;
+	k1->right = k2->left;
+	k2->left = k1;
+	k1->height = max( height( k1->right ), height( k1->left ) ) + 1;
+	k2->height = max( height( k2->right ), k1->height ) + 1;
+	k1 = k2;
+}
+
+
+
+void binarySearchTree::doubleWithLeftChild( node *&k3 )
+{
+	rotateWithRightChild( k3->left );
+	rotateWithLeftChild( k3 );
+}
+
+
+
+void binarySearchTree::doubleWithRightChild( node *&k1 )
+{
+	rotateWithLeftChild( k1->right );
+	rotateWithRightChild( k1 );
+}
+
+
+
+/** ***************************************************************************
 * appends
 * ****************************************************************************/
 void binarySearchTree::insert( const int &x, node *&t ) 
