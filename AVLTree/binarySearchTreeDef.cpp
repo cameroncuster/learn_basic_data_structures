@@ -45,6 +45,7 @@ void binarySearchTree::rotateWithLeftChild( node *&k2 )
 {
 	node *k1 = k2->left;
 	k2->left = k1->right;
+	k1->right = k2;
 	k2->height = max( height( k2->left ), height( k2->right ) ) + 1;
 	k1->height = max( height( k2->left ), k2->height ) + 1;
 	k2 = k1;
@@ -58,7 +59,7 @@ void binarySearchTree::rotateWithRightChild( node *&k1 )
 	k1->right = k2->left;
 	k2->left = k1;
 	k1->height = max( height( k1->right ), height( k1->left ) ) + 1;
-	k2->height = max( height( k2->right ), k1->height ) + 1;
+	k2->height = max( height( k1->right ), k1->height ) + 1;
 	k1 = k2;
 }
 
@@ -96,9 +97,24 @@ void binarySearchTree::insert( const int &x, node *&t )
         nodeCount++;
 	}
 	else if( x < t->element )
+	{
 		insert( x, t->left );
+		if( height( t->left ) - height( t->right ) == 2 )
+			if( x < t->left->element )
+				rotateWithLeftChild( t );
+			else
+				doubleWithLeftChild( t );
+	}
 	else if( x > t->element )
+	{
 		insert( x, t->right );
+		if( height( t->right ) - height( t->left ) == 2 )
+			if( x > t->right->element )
+				rotateWithRightChild( t );
+			else
+				doubleWithRightChild( t );
+	}
+	t->height = max( height( t->left ), height( t->right ) ) + 1;
 }
 
 

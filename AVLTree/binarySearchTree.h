@@ -75,6 +75,7 @@ class binarySearchTree
             else if( t->left == nullptr )
                 return t;
             return findMin( t->left );
+            // balancing has to be done here
         }
 
 
