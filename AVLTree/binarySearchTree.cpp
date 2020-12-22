@@ -343,7 +343,7 @@ void printSet( set<int> &s, stringstream &out, string seperator = ", " )
     for( auto node : s )
         out << node << seperator;
 }
-
+/*
 TEST_CASE( "BST VS STL" )
 {
     srand( time( NULL ) );
@@ -362,7 +362,7 @@ TEST_CASE( "BST VS STL" )
     for( i = 0; i < 10001; i++ )
     {
         num = ( rand( ) % 500 );
-        if( i % 2 == 0 || i % 2 == 1 )
+        if( i % 2 == 0 )
         {
             bst.insert( num );
             bstcpy.insert( num );
@@ -384,3 +384,4 @@ TEST_CASE( "BST VS STL" )
         soutcpy.clear( );
     }
 }
+*/
