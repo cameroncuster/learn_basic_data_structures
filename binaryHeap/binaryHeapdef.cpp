@@ -3,6 +3,7 @@
 binaryHeap::binaryHeap( )
 {
     currentSize = 0;
+    arr.resize( 2 );
     nodeCount = 0;
 }
 
