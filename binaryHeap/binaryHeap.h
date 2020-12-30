@@ -9,17 +9,17 @@ class binaryHeap
         // constructor and destructor
         binaryHeap( );
         // copy constructor with vector and heap
-        // priority queue
 
         const bool isEmpty( ) const;
-        // size function
+        const int size( ) const;
+        const int &findMin( ) const;
 
         // percolate up and percolate down
         void insert( const int &x );
         // getmin function
         void deleteMin( );
-        void deleteMin( int &x );
-        void makeEmpty( );
+        void deleteMin( int &minval );
+        void clear( );
 
     private:
         int currentSize;
