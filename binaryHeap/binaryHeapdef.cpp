@@ -2,7 +2,7 @@
 
 binaryHeap::binaryHeap( )
 {
-    arr.resize( 1 );
+    arr.resize( 2, 0 );
     currentSize = 0;
 }
 
@@ -24,7 +24,7 @@ const int binaryHeap::size( ) const
 
 const int &binaryHeap::findMin( ) const
 {
-    return arr[0];
+    return arr[1];
 }
 
 
@@ -39,4 +39,3 @@ void binaryHeap::insert( const int &x )
         arr[hole] = arr[hole / 2];
     arr[hole] = x;
 }
-
