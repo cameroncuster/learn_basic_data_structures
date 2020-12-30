@@ -39,3 +39,32 @@ void binaryHeap::insert( const int &x )
         arr[hole] = arr[hole / 2];
     arr[hole] = x;
 }
+
+
+
+void binaryHeap::deleteMin( )
+{
+    if( isEmpty( ) )
+        throw underflow_error( "Underflow exception thrown in deleteMin<T>( ) binaryHeap is empty" );
+
+    arr[1] = arr[currentSize--];
+    percolateDown( 1 );
+}
+
+void binaryHeap::percolateDown( int hole )
+{
+    int child;
+    int temp = arr[hole];
+
+    for( ; hole * 2 <= currentSize; hole = child )
+    {
+        child = hole * 2;
+        if( child != currentSize && arr[child + 1] < arr[child] )
+            child++;
+        if( arr[child] < temp )
+            arr[hole] = arr[child];
+        else
+            break;
+    }
+    arr[hole] = temp;
+}

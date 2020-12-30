@@ -18,7 +18,7 @@ class binaryHeap
         void insert( const int &x );
         // getmin function
         void deleteMin( );
-        void deleteMin( int &minval );
+        //void deleteMin( int &minval );
         void clear( );
 
         // DEBUG print with stringstream
@@ -26,4 +26,6 @@ class binaryHeap
     private:
         int currentSize;
         vector<int> arr;
+
+        void percolateDown( int hole );
 };
