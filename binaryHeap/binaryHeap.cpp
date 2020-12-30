@@ -65,7 +65,7 @@ TEST_CASE( "DELETEMIN" )
 
     REQUIRE( heap.size( ) == 0 );
 
-    // Test exception error message
+    // Test exception error mensaje
     //heap.deleteMin( );
 }
 
