@@ -21,6 +21,8 @@ class binaryHeap
         void deleteMin( int &minval );
         void clear( );
 
+        // DEBUG print with stringstream
+
     private:
         int currentSize;
         vector<int> arr;
