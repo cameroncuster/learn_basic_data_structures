@@ -24,5 +24,4 @@ class binaryHeap
     private:
         int currentSize;
         vector<int> arr;
-        int nodeCount;
 };
