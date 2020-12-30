@@ -17,4 +17,17 @@ TEST_CASE( "INSERT/EMPTY/SIZE/FINDMIN" )
     REQUIRE( heap.isEmpty( ) == false );
     REQUIRE( heap.size( ) == 1 );
     REQUIRE( heap.findMin( ) == 1 );
+
+    heap.insert( 2 );
+
+    REQUIRE( heap.size( ) == 2 );
+    REQUIRE( heap.findMin( ) == 1 );
+
+    heap.insert( 0 );
+    heap.insert( 1 );
+    heap.insert( 2 );
+    heap.insert( 3 );
+
+    REQUIRE( heap.size( ) == 6 );
+    REQUIRE( heap.findMin( ) == 0 );
 }
