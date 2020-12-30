@@ -1,3 +1,6 @@
+#include <queue>
+#include <random>
+#include <ctime>
 #include "..//catch.hpp"
 #include "binaryHeap.h"
 
@@ -64,4 +67,27 @@ TEST_CASE( "DELETEMIN" )
 
     // Test exception error message
     //heap.deleteMin( );
+}
+
+TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
+{
+    int i;
+    int temp;
+    binaryHeap heap;
+    priority_queue<int> pq;
+
+    srand( time( NULL ) );
+    for( i = 1; i < 1000; i++ )
+    {
+        temp = rand( ) % 100;
+        /*
+        if( i % 5 == 0 )
+        {
+            heap.deleteMin( );
+            //pq.deleteMin( );
+        }
+        */
+        heap.insert( temp );
+        pq.push( temp );
+    }
 }
