@@ -271,6 +271,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
     }
 }
 
+// must be performed on a tree being constructed
 TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
 {
     binarySearchTree bst;
@@ -311,14 +312,6 @@ TEST_CASE( "OVERLOADED EQUAL OPERATOR" )
         bstcpy.print( soutcpy );
         REQUIRE( sout.str( ) == soutcpy.str( ) );
         CHECK( bst.size( ) == bstcpy.size( ) );
-    }
-
-    SECTION( "SAME TREES" )
-    {
-    }
-
-    SECTION( "TREE WITH VALUES" )
-    {
     }
 }
 
