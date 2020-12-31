@@ -89,5 +89,8 @@ TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
         */
         heap.push( temp );
         pq.push( temp );
+        REQUIRE( heap.isEmpty( ) == pq.empty( ) );
+        REQUIRE( heap.size( ) == pq.size( ) );
+        REQUIRE( heap.top( ) == pq.top( ) );
     }
 }
