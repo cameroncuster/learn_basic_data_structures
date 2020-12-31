@@ -6,14 +6,14 @@
 
 TEST_CASE( "CONSTRUCTOR" )
 {
-    binaryHeap heap;
+    binaryHeap<int> heap;
 
     REQUIRE( heap.isEmpty( ) == true );
 }
 
 TEST_CASE( "PUSH/EMPTY/SIZE/TOP" )
 {
-    binaryHeap heap;
+    binaryHeap<int> heap;
 
     heap.push( 1 );
 
@@ -37,7 +37,7 @@ TEST_CASE( "PUSH/EMPTY/SIZE/TOP" )
 
 TEST_CASE( "POP" )
 {
-    binaryHeap heap;
+    binaryHeap<int> heap;
     
     heap.push( 0 );
     heap.push( 1 );
@@ -69,17 +69,44 @@ TEST_CASE( "POP" )
     //heap.pop( );
 }
 
-TEST_CASE( "MIN PRIORITY_QUEUE VS BINARYHEAP" )
+TEST_CASE( "MIN INT PRIORITY_QUEUE VS BINARYHEAP" )
 {
     int i;
     int temp;
-    binaryHeap heap;
+    binaryHeap<int> heap;
     priority_queue<int, vector<int>, greater<int>> pq;
 
     srand( time( NULL ) );
     for( i = 1; i < 9000001; i++ )
     {
         temp = rand( ) % 500;
+        if( i % 10 == 0 )
+        {
+            heap.pop( );
+            pq.pop( );
+        }
+        else
+        {
+            heap.push( temp );
+            pq.push( temp );
+        }
+        REQUIRE( heap.isEmpty( ) == pq.empty( ) );
+        REQUIRE( heap.size( ) == pq.size( ) );
+        REQUIRE( heap.top( ) == pq.top( ) );
+    }
+}
+
+TEST_CASE( "MIN CHAR PRIORITY QUEUE VS BINARY HEAP" )
+{
+    int i;
+    char temp;
+    binaryHeap<char> heap;
+    priority_queue<char, vector<char>, greater<char>> pq;
+
+    srand( time( NULL ) );
+    for( i = 1; i < 9000001; i++ )
+    {
+        temp = rand( ) % 127;
         if( i % 10 == 0 )
         {
             heap.pop( );

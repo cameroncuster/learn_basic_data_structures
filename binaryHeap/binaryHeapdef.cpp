@@ -2,7 +2,7 @@
 
 binaryHeap::binaryHeap( )
 {
-    arr.resize( 2, 0 );
+    arr.resize( 2 );
     currentSize = 0;
 }
 
@@ -50,6 +50,8 @@ void binaryHeap::pop( )
     arr[1] = arr[currentSize--];
     percolateDown( 1 );
 }
+
+
 
 void binaryHeap::percolateDown( int hole )
 {
