@@ -77,18 +77,19 @@ TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
     priority_queue<int, vector<int>, greater<int>> pq;
 
     srand( time( NULL ) );
-    for( i = 1; i < 1000; i++ )
+    for( i = 1; i < 9000001; i++ )
     {
-        temp = rand( ) % 100;
-        /*
-        if( i % 5 == 0 )
+        temp = rand( ) % 500;
+        if( i % 10 == 0 )
         {
             heap.pop( );
-            //pq.pop( );
+            pq.pop( );
         }
-        */
-        heap.push( temp );
-        pq.push( temp );
+        else
+        {
+            heap.push( temp );
+            pq.push( temp );
+        }
         REQUIRE( heap.isEmpty( ) == pq.empty( ) );
         REQUIRE( heap.size( ) == pq.size( ) );
         REQUIRE( heap.top( ) == pq.top( ) );
