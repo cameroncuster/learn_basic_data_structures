@@ -226,7 +226,7 @@ void printList( list<int> list, ostream &out, string seperator = ", " )
 
 TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
 {
-    int i;
+    int i, j;
     int temp;
     sortedSingle<int> list;
     std::list<int> l;
@@ -253,7 +253,25 @@ TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
         REQUIRE( list.empty( ) == l.empty( ) );
         REQUIRE( list.size( ) == l.size( ) );
         REQUIRE( sout.str( ) == lout.str( ) );
+
         // iterate through the entire list and verify the lists match by
-        // verifying the iterators at each position in the list
+        // verifying the iterators at each position in the list utilizing both
+        // pre and post increment
+        it = list.begin( );
+        lit = l.begin( );
+        for( j = 0; j < list.size( ); j++ )
+        {
+            REQUIRE( *it == *lit );
+            if( j % 2 == 0 )
+            {
+                it++;
+                lit++;
+            }
+            else
+            {
+                ++it;
+                ++lit;
+            }
+        }
     }
 }
