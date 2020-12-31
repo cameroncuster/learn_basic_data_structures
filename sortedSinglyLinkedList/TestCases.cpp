@@ -247,8 +247,10 @@ TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
         if( !list.empty( ) )
             sout << ", ";
         printList( l, lout );
+        REQUIRE( list.empty( ) == l.empty( ) );
+        REQUIRE( list.size( ) == l.size( ) );
         REQUIRE( sout.str( ) == lout.str( ) );
-        sout.clear( );
-        lout.clear( );
+        // iterate through the entire list and verify the lists match by
+        // verifying the iterators at each position in the list
     }
 }
