@@ -74,7 +74,7 @@ TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
     int i;
     int temp;
     binaryHeap heap;
-    priority_queue<int> pq;
+    priority_queue<int, vector<int>, greater<int>> pq;
 
     srand( time( NULL ) );
     for( i = 1; i < 1000; i++ )
