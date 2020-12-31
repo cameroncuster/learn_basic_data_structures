@@ -69,7 +69,7 @@ TEST_CASE( "POP" )
     //heap.pop( );
 }
 
-TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
+TEST_CASE( "MIN PRIORITY_QUEUE VS BINARYHEAP" )
 {
     int i;
     int temp;
