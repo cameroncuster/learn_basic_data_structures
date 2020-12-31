@@ -218,7 +218,7 @@ TEST_CASE( "COPY CONSTRUCTOR<STR> _ EXTRA POINT" )
     }
 }
 
-void printList( list<int> list, ostream &out, string seperator=", " )
+void printList( list<int> list, ostream &out, string seperator = ", " )
 {
     for( auto l : list )
         out << l << seperator;
@@ -235,17 +235,20 @@ TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
     stringstream lout;
 
     srand( time( NULL ) );
-    for( i = 0; i < 1000; i++ )
+    for( i = 0; i < 10000; i++ )
     {
-        temp = rand( ) % 10;
+        temp = rand( ) % 100;
         list.insert( temp );
         l.push_back( temp );
         l.sort( );
-        //while( list.remove( i % 10 ) );
-        //l.remove( i % 10 );
+        while( list.remove( i % 100 ) );
+        l.remove( i % 100 );
         list.print( sout );
-        sout << ", ";
+        if( !list.empty( ) )
+            sout << ", ";
         printList( l, lout );
         REQUIRE( sout.str( ) == lout.str( ) );
+        sout.clear( );
+        lout.clear( );
     }
 }

@@ -173,8 +173,7 @@ void sortedSingle<TY>::print( ostream &out, string seperator )
         return;
     while( temp->next != nullptr )
     {
-        out << temp->theItem;
-        out << seperator;
+        out << temp->theItem << seperator;
         temp = temp->next;
     }
     out << temp->theItem;
