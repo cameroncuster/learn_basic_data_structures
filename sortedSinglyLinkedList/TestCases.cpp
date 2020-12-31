@@ -1,5 +1,10 @@
+#include <random>
+#include <ctime>
+#include <algorithm>
+#include <list>
 #include "..\\catch.hpp"
 #include "sortedSingle.h"
+using std::list;
 using namespace std;
 
 TEST_CASE( "INTTEMPLATE" )
@@ -210,5 +215,37 @@ TEST_CASE( "COPY CONSTRUCTOR<STR> _ EXTRA POINT" )
         REQUIRE( strsout.str( ) == "a, b, c, d, e" );
         REQUIRE( strsoutcpy.str( ) == "b, d" );
         REQUIRE( strsout.str( ) != strsoutcpy.str( ) );
+    }
+}
+
+void printList( list<int> list, ostream &out, string seperator=", " )
+{
+    for( auto l : list )
+        out << l << seperator;
+}
+
+TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
+{
+    int i;
+    int temp;
+    sortedSingle<int> list;
+    std::list<int> l;
+
+    stringstream sout;
+    stringstream lout;
+
+    srand( time( NULL ) );
+    for( i = 0; i < 1000; i++ )
+    {
+        temp = rand( ) % 10;
+        list.insert( temp );
+        l.push_back( temp );
+        l.sort( );
+        //while( list.remove( i % 10 ) );
+        //l.remove( i % 10 );
+        list.print( sout );
+        sout << ", ";
+        printList( l, lout );
+        REQUIRE( sout.str( ) == lout.str( ) );
     }
 }
