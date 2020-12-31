@@ -3,7 +3,7 @@
 #include <sstream>
 using namespace std;
 
-//template typename <TY>
+//template <class TY>
 class binaryHeap
 {
     public:
