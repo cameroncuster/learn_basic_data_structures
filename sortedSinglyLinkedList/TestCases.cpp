@@ -231,6 +231,9 @@ TEST_CASE( "INT LINKED LIST VS STL LINKED LIST" )
     sortedSingle<int> list;
     std::list<int> l;
 
+    sortedSingle<int>::iterator it;
+    std::list<int>::iterator lit;
+
     stringstream sout;
     stringstream lout;
 
