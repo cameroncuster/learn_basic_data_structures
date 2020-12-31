@@ -11,62 +11,62 @@ TEST_CASE( "CONSTRUCTOR" )
     REQUIRE( heap.isEmpty( ) == true );
 }
 
-TEST_CASE( "INSERT/EMPTY/SIZE/FINDMIN" )
+TEST_CASE( "PUSH/EMPTY/SIZE/TOP" )
 {
     binaryHeap heap;
 
-    heap.insert( 1 );
+    heap.push( 1 );
 
     REQUIRE( heap.isEmpty( ) == false );
     REQUIRE( heap.size( ) == 1 );
-    REQUIRE( heap.findMin( ) == 1 );
+    REQUIRE( heap.top( ) == 1 );
 
-    heap.insert( 2 );
+    heap.push( 2 );
 
     REQUIRE( heap.size( ) == 2 );
-    REQUIRE( heap.findMin( ) == 1 );
+    REQUIRE( heap.top( ) == 1 );
 
-    heap.insert( 0 );
-    heap.insert( 1 );
-    heap.insert( 2 );
-    heap.insert( 3 );
+    heap.push( 0 );
+    heap.push( 1 );
+    heap.push( 2 );
+    heap.push( 3 );
 
     REQUIRE( heap.size( ) == 6 );
-    REQUIRE( heap.findMin( ) == 0 );
+    REQUIRE( heap.top( ) == 0 );
 }
 
-TEST_CASE( "DELETEMIN" )
+TEST_CASE( "POP" )
 {
     binaryHeap heap;
     
-    heap.insert( 0 );
-    heap.insert( 1 );
-    heap.insert( 2 );
-    heap.insert( 3 );
-    heap.insert( 4 );
+    heap.push( 0 );
+    heap.push( 1 );
+    heap.push( 2 );
+    heap.push( 3 );
+    heap.push( 4 );
 
-    heap.deleteMin( );
+    heap.pop( );
 
     REQUIRE( heap.size( ) == 4 );
 
-    heap.deleteMin( );
+    heap.pop( );
 
     REQUIRE( heap.size( ) == 3 );
 
-    heap.deleteMin( );
+    heap.pop( );
 
     REQUIRE( heap.size( ) == 2 );
 
-    heap.deleteMin( );
+    heap.pop( );
 
     REQUIRE( heap.size( ) == 1 );
 
-    heap.deleteMin( );
+    heap.pop( );
 
     REQUIRE( heap.size( ) == 0 );
 
-    // Test exception error mensaje
-    //heap.deleteMin( );
+    // Test exception error message
+    //heap.pop( );
 }
 
 TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
@@ -83,11 +83,11 @@ TEST_CASE( "PRIORITY_QUEUE VS BINARYHEAP" )
         /*
         if( i % 5 == 0 )
         {
-            heap.deleteMin( );
-            //pq.deleteMin( );
+            heap.pop( );
+            //pq.pop( );
         }
         */
-        heap.insert( temp );
+        heap.push( temp );
         pq.push( temp );
     }
 }

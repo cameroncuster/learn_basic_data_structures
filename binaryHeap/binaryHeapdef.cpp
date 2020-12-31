@@ -22,14 +22,14 @@ const int binaryHeap::size( ) const
 
 
 
-const int &binaryHeap::findMin( ) const
+const int &binaryHeap::top( ) const
 {
     return arr[1];
 }
 
 
 
-void binaryHeap::insert( const int &x )
+void binaryHeap::push( const int &x )
 {
     int hole = ++currentSize;
     if( currentSize == arr.size( ) - 1 )
@@ -42,10 +42,10 @@ void binaryHeap::insert( const int &x )
 
 
 
-void binaryHeap::deleteMin( )
+void binaryHeap::pop( )
 {
     if( isEmpty( ) )
-        throw underflow_error( "Underflow exception thrown in deleteMin<T>( ) binaryHeap is empty" );
+        throw underflow_error( "Underflow exception thrown in pop<T>( ) binaryHeap is empty" );
 
     arr[1] = arr[currentSize--];
     percolateDown( 1 );
