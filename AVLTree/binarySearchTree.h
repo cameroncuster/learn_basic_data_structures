@@ -73,7 +73,20 @@ class binarySearchTree
         if( t == nullptr )
             return nullptr;
         else if( t->left == nullptr )
+        {
+            // do I need to balance here?
+            if( height( t->left ) - height( t->right ) == 2 )
+                if( x < t->left->element )
+                    rotateWithLeftChild( t );
+                else
+                    doubleWithLeftChild( t );
+            if( height( t->right ) - height( t->left ) == 2 )
+                if( x > t->right->element )
+                    rotateWithRightChild( t );
+                else
+                    doubleWithRightChild( t );
             return t;
+        }
 
         if( height( t->left ) - height( t->right ) == 2 )
             if( x < t->left->element )
