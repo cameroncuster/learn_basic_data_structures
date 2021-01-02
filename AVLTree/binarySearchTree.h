@@ -85,6 +85,8 @@ class binarySearchTree
                     rotateWithRightChild( t );
                 else
                     doubleWithRightChild( t );
+            t->height = max( height( t->left ), height( t->right ) ) + 1;
+
             return t;
         }
 

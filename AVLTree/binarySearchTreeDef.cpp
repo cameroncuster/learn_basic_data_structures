@@ -167,6 +167,7 @@ void binarySearchTree::erase( const int &x, node *&t )
                 rotateWithRightChild( t );
             else
                 doubleWithRightChild( t );
+        t->height = max( height( t->left ), height( t->right ) ) + 1;
     }
 	else
 	{
