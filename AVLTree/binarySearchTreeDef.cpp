@@ -159,6 +159,7 @@ void binarySearchTree::erase( const int &x, node *&t )
     }
 	else
 	{
+		// does it make sense to balance here?
 		if( t->left == nullptr )
 		{
 			node *temp = t->right;
