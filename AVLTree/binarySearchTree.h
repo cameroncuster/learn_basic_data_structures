@@ -68,7 +68,7 @@ class binarySearchTree
     void print( const node *t, ostream &out, const string seperator = ", " ) const;
 
     // internal methods of finding the min and max in a subtree
-    node *findMin( const int &x, node *t )
+    node *findMin( const int &x, node *&t )
     {
         if( t == nullptr )
             return nullptr;

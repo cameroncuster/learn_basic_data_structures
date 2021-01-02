@@ -156,10 +156,20 @@ void binarySearchTree::erase( const int &x, node *&t )
 	{
 		t->element = findMin( x, t->right )->element;
 		erase( t->element, t->right );
+		// do I need to balance here?
+        if( height( t->left ) - height( t->right ) == 2 )
+            if( x < t->left->element )
+                rotateWithLeftChild( t );
+            else
+                doubleWithLeftChild( t );
+        if( height( t->right ) - height( t->left ) == 2 )
+            if( x > t->right->element )
+                rotateWithRightChild( t );
+            else
+                doubleWithRightChild( t );
     }
 	else
 	{
-		// does it make sense to balance here?
 		if( t->left == nullptr )
 		{
 			node *temp = t->right;
