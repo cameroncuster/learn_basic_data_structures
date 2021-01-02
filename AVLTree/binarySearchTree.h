@@ -74,9 +74,7 @@ class binarySearchTree
             return nullptr;
         else if( t->left == nullptr )
             return t;
-        return findMin( x, t->left );
 
-        // balancing has to be done
         if( height( t->left ) - height( t->right ) == 2 )
             if( x < t->left->element )
                 rotateWithLeftChild( t );
@@ -88,6 +86,8 @@ class binarySearchTree
             else
                 doubleWithRightChild( t );
         t->height = max( height( t->left ), height( t->right ) ) + 1;
+
+        return findMin( x, t->left );
     }
 
 
