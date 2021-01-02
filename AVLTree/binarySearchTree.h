@@ -82,7 +82,7 @@ class binarySearchTree
                 rotateWithLeftChild( t );
             else
                 doubleWithLeftChild( t );
-        else if( height( t->right ) - height( t->left ) == 2 )
+        if( height( t->right ) - height( t->left ) == 2 )
             if( x > t->right->element )
                 rotateWithRightChild( t );
             else
