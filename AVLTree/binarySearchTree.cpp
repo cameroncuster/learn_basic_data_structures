@@ -138,7 +138,7 @@ TEST_CASE( "FINDMAX" )
 
     REQUIRE( bst.findMax( ) == 5 );
 }
-/*
+
 TEST_CASE( "erase" )
 {
     binarySearchTree bst;
@@ -227,7 +227,7 @@ TEST_CASE( "erase" )
         REQUIRE( sout.str( ) == "-1, 1, 2, 4, 5, 7, 8, 13, " );
     }
 }
-*/
+
 TEST_CASE( "COPY CONSTRUCTOR" )
 {
     binarySearchTree bst;

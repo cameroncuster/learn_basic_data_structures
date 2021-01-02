@@ -131,12 +131,30 @@ void binarySearchTree::erase( const int &x, node *&t )
 	if( t == nullptr )
 		return;
 	if( x < t->element )
+	{
 		erase( x, t->left );
+		// balance as you come back up the stack
+		if( height( t->left ) - height( t->right ) == 2 )
+			if( x < t->left->element )
+				rotateWithLeftChild( t );
+			else
+				doubleWithLeftChild( t );
+        t->height = max( height( t->left ), height( t->right ) ) + 1;
+	}
 	else if( x > t->element )
+	{
 		erase( x, t->right );
+		// balance as you come back up the stack
+		if( height( t->right ) - height( t->left ) == 2 )
+			if( x > t->right->element )
+				rotateWithRightChild( t );
+			else
+				doubleWithRightChild( t );
+        t->height = max( height( t->left ), height( t->right ) ) + 1;
+	}
 	else if( t->left != nullptr && t->right != nullptr )
 	{
-		t->element = findMin( t->right )->element;
+		t->element = findMin( x, t->right )->element;
 		erase( t->element, t->right );
     }
 	else
@@ -232,10 +250,11 @@ const int binarySearchTree::size( ) const
 
 
 
-const int binarySearchTree::findMin( ) const
+const int binarySearchTree::findMin( ) 
 {
-	if( findMin( root ) != nullptr )
-		return findMin( root )->element;
+	int x = NULL;
+	if( findMin( x, root ) != nullptr )
+		return findMin( x, root )->element;
 	return NULL;
 }
 
