@@ -23,6 +23,7 @@ class binaryHeap
         int currentSize;
         vector<TY> arr;
 
+        // implement linear buildHeap function
         void percolateDown( int hole );
 };
 
