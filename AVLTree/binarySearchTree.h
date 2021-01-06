@@ -20,7 +20,7 @@ class binarySearchTree
     const bool empty( ) const;
     const bool count( const int &x ) const;
     const int size( ) const;
-    const int findMin( ); // could not be const because of balancing
+    const int findMin( ) const;
     const int findMax( ) const;
 
     // overloaded operators
@@ -68,41 +68,13 @@ class binarySearchTree
     void print( const node *t, ostream &out, const string seperator = ", " ) const;
 
     // internal methods of finding the min and max in a subtree
-    node *findMin( const int &x, node *&t )
+    const node *findMin( const node *t ) const
     {
         if( t == nullptr )
             return nullptr;
         else if( t->left == nullptr )
-        {
-            // do I need to balance here?
-            if( height( t->left ) - height( t->right ) == 2 )
-                if( x < t->left->element )
-                    rotateWithLeftChild( t );
-                else
-                    doubleWithLeftChild( t );
-            if( height( t->right ) - height( t->left ) == 2 )
-                if( x > t->right->element )
-                    rotateWithRightChild( t );
-                else
-                    doubleWithRightChild( t );
-            t->height = max( height( t->left ), height( t->right ) ) + 1;
-
             return t;
-        }
-
-        if( height( t->left ) - height( t->right ) == 2 )
-            if( x < t->left->element )
-                rotateWithLeftChild( t );
-            else
-                doubleWithLeftChild( t );
-        if( height( t->right ) - height( t->left ) == 2 )
-            if( x > t->right->element )
-                rotateWithRightChild( t );
-            else
-                doubleWithRightChild( t );
-        t->height = max( height( t->left ), height( t->right ) ) + 1;
-
-        return findMin( x, t->left );
+        return findMin( t->left );
     }
 
 
