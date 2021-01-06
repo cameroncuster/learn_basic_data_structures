@@ -162,7 +162,7 @@ void binarySearchTree::erase( const int &x, node *&t )
                 rotateWithLeftChild( t );
             else
                 doubleWithLeftChild( t );
-        if( height( t->right ) - height( t->left ) == 2 )
+        else if( height( t->right ) - height( t->left ) == 2 )
             if( x > t->right->element )
                 rotateWithRightChild( t );
             else
