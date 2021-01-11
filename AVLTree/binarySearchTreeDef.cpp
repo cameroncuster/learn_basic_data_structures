@@ -256,9 +256,8 @@ const int binarySearchTree::findMin( ) const
 
 const int binarySearchTree::findMax( ) const
 {
-    if( findMax( root ) != nullptr ) // optimize time constant of time 
-        return findMax( root )->element;
-    return NULL;
+    const node *max = findMax( root );
+    return max != nullptr ? max->element : NULL; // throw exception if called on empty
 }
 
 
