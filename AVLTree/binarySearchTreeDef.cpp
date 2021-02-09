@@ -100,19 +100,23 @@ void binarySearchTree::insert( const int &x, node *&t )
     {
         insert( x, t->left );
         if( height( t->left ) - height( t->right ) == 2 )
+		{
             if( x < t->left->element )
                 rotateWithLeftChild( t );
             else
                 doubleWithLeftChild( t );
+		}
     }
     else if( x > t->element )
     {
         insert( x, t->right );
         if( height( t->right ) - height( t->left ) == 2 )
+		{
             if( x > t->right->element )
                 rotateWithRightChild( t );
             else
                 doubleWithRightChild( t );
+		}
     }
     t->height = max( height( t->left ), height( t->right ) ) + 1;
 }
