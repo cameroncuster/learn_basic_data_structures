@@ -1,0 +1,7 @@
+*.o
+*.d
+main
+heatMap
+heatMapConsole
+test
+in.txt
