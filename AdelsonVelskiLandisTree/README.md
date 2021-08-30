@@ -1,3 +1,3 @@
-# AVL Tree Implementation
+# Adelson Velski and Landis Tree Implementation
 Well tested AVL Tree implementation with bug in erase function - do not use
 until resolved.
