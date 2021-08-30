@@ -1,1 +1,2 @@
 - Fix AVL Tree erase/delete
+- add README for all Data Structures
