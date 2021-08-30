@@ -5,7 +5,11 @@ SOURCE = src/application.cpp \
          src/dfsPaths.cpp \
          src/bridges.cpp
 
+GENERATE_GRAPH_SOURCE = src/generateGraph.cpp
+
 OBJS = $(SOURCE:.cpp=.o)
+
+GENERATE_GRAPH_OBJS = $(GENERATE_GRAPH_SOURCE:.cpp=.o)
 
 #GNU C/C++ Compiler
 GCC = g++
@@ -29,11 +33,11 @@ all : application generateGraph
 application: $(OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
-generateGraph: generateGraph.cpp
+generateGraph: $(GENERATE_GRAPH_OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf src/*.o src/*.d core application generateGraph
+	rm -rf *.dat src/*.o src/*.d core application generateGraph
 
 debug: CXXFLAGS = -Wall -I inc -DDEBUG -g -lX11 -lGL -lpng -lpthread -lstdc++fs
 debug: application
