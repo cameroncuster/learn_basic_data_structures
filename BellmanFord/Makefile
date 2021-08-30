@@ -28,7 +28,7 @@ LIBS = -lX11 -lGL -lpng -lpthread -lstdc++fs
 
 # Targets include all, clean, debug, tar
 
-all : application
+all : application generateGraph
 
 application: $(OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
