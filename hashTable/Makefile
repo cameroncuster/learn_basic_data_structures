@@ -38,7 +38,7 @@ clean:
 	rm -rf src/*.o src/*.d tests/*.o tests/*.d core heatMap main test
 
 tar:
-	tar cvf HashTable.tar $(HEATMAP_SRC) $(HASHTABLE_SRC) $(MAIN_SRC) Makefile inc/*.h
+	tar cvf HashTable.tar $(HEATMAP_SRC) $(HASHTABLE_SRC) $(MAIN_SRC) $(TEST_SRC) Makefile inc/*.h
 
 debug: CXXFLAGS = -DDEBUG -g -Wall -I inc
 debug: main
