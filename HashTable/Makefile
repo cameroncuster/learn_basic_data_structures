@@ -1,10 +1,16 @@
-HEATMAP_SRC = src/heatMap.cpp src/application.cpp src/function.cpp
+SOURCE_DIR = src
 
-HASHTABLE_SRC = src/hashTable.cpp
+INCLUDE_DIR = inc
 
-MAIN_SRC = src/main.cpp
+TEST_DIR = tests
 
-TEST_SRC = tests/testMain.cpp tests/testCases.cpp
+HEATMAP_SRC = $(SOURCE_DIR)/heatMap.cpp $(SOURCE_DIR)/application.cpp $(SOURCE_DIR)/function.cpp
+
+HASHTABLE_SRC = $(SOURCE_DIR)/hashTable.cpp
+
+MAIN_SRC = $(SOURCE_DIR)/main.cpp
+
+TEST_SRC = $(TEST_DIR)/testMain.cpp $(TEST_DIR)/testCases.cpp
 
 HEATMAP_OBJS = $(HEATMAP_SRC:.cpp=.o)
 
@@ -14,7 +20,7 @@ MAIN_OBJ = $(MAIN_SRC:.cpp=.o)
 
 TEST_OBJ = $(TEST_SRC:.cpp=.o)
 
-CXXFLAGS = -lstdc++fs -Wall -O3 -I inc
+CXXFLAGS = -lstdc++fs -Wall -O3 -I $(INCLUDE_DIR)
 LIBS = -lGL -lX11 -lpng -lstdc++fs -lpthread
 
 #GNU C/C++ compiler
@@ -35,12 +41,12 @@ test: $(TEST_OBJ) $(HASHTABLE_OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf src/*.o src/*.d tests/*.o tests/*.d core heatMap main test
+	rm -rf $(SOURCE_DIR)/*.o $(SOURCE_DIR)/*.d $(TEST_DIR)/*.o $(TEST_DIR)/*.d core heatMap main test
 
 tar:
-	tar cvf HashTable.tar $(HEATMAP_SRC) $(HASHTABLE_SRC) $(MAIN_SRC) $(TEST_SRC) Makefile inc/*.h
+	tar cvf HashTable.tar $(HEATMAP_SRC) $(HASHTABLE_SRC) $(MAIN_SRC) $(TEST_SRC) Makefile $(INCLUDE_DIR)/*.h
 
-debug: CXXFLAGS = -DDEBUG -g -Wall -I inc
+debug: CXXFLAGS = -DDEBUG -g -Wall -I $(INCLUDE_DIR)
 debug: main
 
 help:
