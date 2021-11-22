@@ -1,11 +1,15 @@
-SOURCE = src/application.cpp \
-         src/main.cpp \
-         src/weightedGraph.cpp \
-         src/edge.cpp \
-         src/bellmanFord.cpp
+SOURCE_DIR = src
 
-GENERATE_GRAPH_SOURCE = src/generateGraph.cpp \
-						src/edge.cpp
+INCLUDE_DIR = inc
+
+SOURCE = $(SOURCE_DIR)/application.cpp \
+         $(SOURCE_DIR)/main.cpp \
+         $(SOURCE_DIR)/weightedGraph.cpp \
+         $(SOURCE_DIR)/edge.cpp \
+         $(SOURCE_DIR)/bellmanFord.cpp
+
+GENERATE_GRAPH_SOURCE = $(SOURCE_DIR)/generateGraph.cpp \
+						$(SOURCE_DIR)/edge.cpp
 
 OBJS = $(SOURCE:.cpp=.o)
 
@@ -18,7 +22,7 @@ GCC = g++
 LINK = g++
 
 # Compiler flags
-CFLAGS = -Wall -O3 -I inc
+CFLAGS = -Wall -O3 -I $(INCLUDE_DIR)
 CXXFLAGS = $(CFLAGS)
 
 # Fill in special libraries needed here
@@ -37,13 +41,13 @@ generateGraph: $(GENERATE_GRAPH_OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf *.dat src/*.o src/*.d generateGraph core application
+	rm -rf *.dat $(SOURCE_DIR)/*.o $(SOURCE_DIR)/*.d generateGraph core application
 
-debug: CXXFLAGS = -Wall -I inc -DDEBUG -g -lX11 -lGL -lpng -lpthread -lstdc++fs
+debug: CXXFLAGS = -Wall -I $(INCLUDE_DIR) -DDEBUG -g -lX11 -lGL -lpng -lpthread -lstdc++fs
 debug: application
 
 tar: clean
-	tar zcvf application.tgz $(SOURCE) $(GENERATE_GRAPH_SOURCE) inc/*.h Makefile
+	tar zcvf application.tgz $(SOURCE) $(GENERATE_GRAPH_SOURCE) $(INCLUDE_DIR)/*.h Makefile
 
 help:
 	@echo "	make application  - same as make all"
