@@ -1,7 +1,11 @@
-SOURCE = src/application.cpp \
-         src/disjoint.cpp \
-         src/main.cpp \
-         src/maze.cpp
+SOURCE_DIR = src
+
+INCLUDE_DIR = inc
+
+SOURCE = $(SOURCE_DIR)/application.cpp \
+         $(SOURCE_DIR)/disjoint.cpp \
+         $(SOURCE_DIR)/main.cpp \
+         $(SOURCE_DIR)/maze.cpp
 
 OBJS = $(SOURCE:.cpp=.o)
 
@@ -12,7 +16,7 @@ GCC = g++
 LINK = g++
 
 # Compiler flags
-CFLAGS = -Wall -O3 -I inc
+CFLAGS = -Wall -O3 -I $(INCLUDE_DIR)
 CXXFLAGS = $(CFLAGS)
 
 # Fill in special libraries needed here
@@ -28,13 +32,13 @@ maze: $(OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf src/*.o src/*.d core maze
+	rm -rf $(SOURCE_DIR)/*.o $(SOURCE_DIR)/*.d core maze
 
-debug: CXXFLAGS = -Wall -I inc -DDEBUG -g
+debug: CXXFLAGS = -Wall -I $(INCLUDE_DIR) -DDEBUG -g
 debug: maze
 
 tar: clean
-	tar zcvf maze.tgz $(SOURCE) inc/*.h Makefile
+	tar zcvf maze.tgz $(SOURCE) $(INCLUDE_DIR)/*.h Makefile
 
 help:
 	@echo "	make maze  - same as make all"
