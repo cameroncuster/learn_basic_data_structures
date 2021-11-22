@@ -1,10 +1,16 @@
-SOURCE = src/application.cpp \
-         src/main.cpp \
-         src/graph.cpp
+SOURCE_DIR = src
 
-SOURCE_TEST = tests/testMain.cpp \
-			  tests/testCases.cpp \
-			  src/graph.cpp
+INCLUDE_DIR = inc
+
+TEST_DIR = test
+
+SOURCE = $(SOURCE_DIR)/application.cpp \
+         $(SOURCE_DIR)/main.cpp \
+         $(SOURCE_DIR)/graph.cpp
+
+SOURCE_TEST = $(TEST_DIR)/testMain.cpp \
+			  $(TEST_DIR)/testCases.cpp \
+			  $(SOURCE_DIR)/graph.cpp
 
 OBJS = $(SOURCE:.cpp=.o)
 
@@ -17,7 +23,7 @@ GCC = g++
 LINK = g++
 
 # Compiler flags
-CFLAGS = -Wall -O3 -I inc
+CFLAGS = -Wall -O3 -I $(INCLUDE_DIR)
 CXXFLAGS = $(CFLAGS)
 
 # Fill in special libraries needed here
@@ -36,13 +42,13 @@ tests: $(TEST_OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf src/*.o src/*.d core graph tests
+	rm -rf $(SOURCE_DIR)/*.o $(SOURCE_DIR)/*.d core graph tests
 
-debug: CXXFLAGS = -Wall -I inc -DDEBUG -g -lX11 -lGL -lpng -lpthread -lstdc++fs
+debug: CXXFLAGS = -Wall -I $(INCLUDE_DIR) -DDEBUG -g -lX11 -lGL -lpng -lpthread -lstdc++fs
 debug: graph
 
 tar: clean
-	tar zcvf graph.tgz $(SOURCE) $(SOURCE_TEST) inc/*.h Makefile
+	tar zcvf graph.tgz $(SOURCE) $(SOURCE_TEST) $(INCLUDE_DIR)/*.h Makefile
 
 help:
 	@echo "	make graph - same as make all"
